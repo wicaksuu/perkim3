@@ -32,11 +32,13 @@
     <!--Slick Slider-->
     <link rel="stylesheet" href="css/slick.css">
     <!--Animation CSS-->
-    <link rel="stylesheet" href="css/animation.css">
+{{--
+<link rel="stylesheet" href="css/animation.css"> --}}
     <!--Slider CSS-->
     <link rel="stylesheet" href="css/slider.css">
     <!--Magnific CSS-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+{{--
+<link rel="stylesheet" href="css/magnific-popup.css"> --}}
     <!-- animate CSS -->
     <link rel="stylesheet" href="css/animate.min.css">
     <!-- OWL-Carousel CSS -->
@@ -63,11 +65,13 @@
                 <a href="/" class="navbar-brand"><img src="img/logo-dark.png" alt="Arkit"></a>
                 <div class="d-flex menu-wrap">
                     <div id="mainmenu" class="mainmenu">
-                        <ul class="nav">
-                            <li><a data-scroll class="nav-link active" href="/">Home<span
+<ul class="nav">
+<li><a data-scroll class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+</li>
+<li><a data-scroll class="nav-link" href="{{ url('login') }}">Masuk<span
                                         class="sr-only">(current)</span></a>
                             </li>
-                            <li><a data-scroll class="nav-link active" href="/">Home<span
+<li><a data-scroll class="nav-link" href="{{ url('register') }}">Pendaftaran<span
                                         class="sr-only">(current)</span></a>
                             </li>
                         </ul>
@@ -595,7 +599,7 @@
     <!-- Wow JS -->
     <script src="js/vendor/wow.min.js"></script>
     <!-- Google Map JS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPH8h1UpcK01BdcvoZeOzq-_wJqRxN1Pc"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPH8h1UpcK01BdcvoZeOzq-_wJqRxN1Pc"></script> --}}
     <!-- Main JS -->
     <script src="js/main.js"></script>
 
