@@ -6,7 +6,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Data Perusahaan
+                Data Badan Usaha
             </h2>
         </template>
 
@@ -29,7 +29,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                                             for="example-text-input"
                                             class="block font-medium text-gray-700 mb-2"
                                         >
-                                            Nama Perusahaan
+                                            Nama Badan Usaha
                                         </label>
                                         <input
                                             class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
@@ -62,7 +62,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                     <div class="card">
                         <div class="card-body pb-0">
                             <h6 class="mb-1 text-15 text-gray-700">
-                                Alamat Usaha
+                                Alamat Badan Usaha
                             </h6>
                         </div>
                         <div class="card-body">
@@ -78,7 +78,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                                         <input
                                             class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
                                             type="text"
-                                            placeholder="latitude,longitude"
+                                            placeholder="-7.5374307,111.6302997"
                                             id="example-text-input"
                                         />
                                     </div>
@@ -255,7 +255,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                                         <input
                                             class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
                                             type="text"
-                                            placeholder="perkim@madiunkab.go.id"
+                                            placeholder="123***"
                                             id="example-text-input"
                                         />
 

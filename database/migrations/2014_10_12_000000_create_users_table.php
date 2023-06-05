@@ -38,4 +38,4 @@ return new class extends Migration
 // create 14 - 1 database 7. data perumahan (d dipisah)
 // create 9  -1 database 8 PERSYARATAN PRASARANA, SARANA DAN UTILITAS UMUM (PSU) (E)
 // destroy 7  - 1 database 10 PERSYARATAN PRASARANA, SARANA DAN UTILITAS UMUM (PSU)
-// simpedalrum.madiunkab.go.id
+// sipedalrum.madiunkab.go.id
