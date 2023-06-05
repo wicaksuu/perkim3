@@ -41,6 +41,10 @@ Route::middleware([
         return Inertia::render('Data/DataPerusahaan');
     })->name('data-perusahaan');
 
+    Route::get('/data-pemohon', function () {
+        return Inertia::render('Data/DataPemohon');
+    })->name('data-pemohon');
+
 
 
     Route::get('/riwayat', function () {
