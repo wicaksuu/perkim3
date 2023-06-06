@@ -8,10 +8,10 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 
-import "@/assets/libs/@popperjs/core/umd/popper.min.js";
-import "@/assets/libs/feather-icons/feather.min.js";
-import "@/assets/libs/metismenujs/metismenujs.min.js";
-import "@/assets/libs/simplebar/simplebar.min.js";
+// import "@/assets/libs/@popperjs/core/umd/popper.min.js";
+// import "@/assets/libs/feather-icons/feather.min.js";
+// import "@/assets/libs/metismenujs/metismenujs.min.js";
+// import "@/assets/libs/simplebar/simplebar.min.js";
 defineProps({
     title: String,
 });
@@ -36,8 +36,8 @@ const logout = () => {
 </script>
 
 <style>
-@import "@/assets/css/icons.css";
-@import "@/assets/css/tailwind.css";
+/* @import "@/assets/css/icons.css";
+@import "@/assets/css/tailwind.css"; */
 </style>
 
 <template>

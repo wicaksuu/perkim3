@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\FormDataController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\returnSelf;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +20,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    // return redirect('/login');
+    return redirect('/login');
     // return Inertia::render('Welcome', [
     //     'canLogin' => Route::has('login'),
     //     'canRegister' => Route::has('register'),
@@ -31,11 +35,69 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
+    'verified'
 ])->group(function () {
+
+
+
+
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/Dashboard');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
     })->name('dashboard');
+
+    Route::get('/pengajuan', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/Pengajuan');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('pengajuan');
+
+    Route::get('/pengajuan-mbr', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/Mbr');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('pengajuan-mbr');
+
+    Route::post('/submit', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return app()->call('App\Http\Controllers\FormDataController@submit');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('submit');
+    Route::post('/kirim-submit', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return app()->call('App\Http\Controllers\FormDataController@kirimuser');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('kirim-submit');
+    
+    // Route::get('/dashboard', function () {
+    //     return Inertia::render('Dashboard');
+    // })->name('dashboard');
 
     Route::get('/data-perusahaan', function () {
         return Inertia::render('Data/DataPerusahaan');
