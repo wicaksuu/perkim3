@@ -74,6 +74,8 @@ class FormDataController extends Controller
             return redirect(route('pengajuan-non-mbr-1'));
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit 100 sd 3000') {
             return redirect(route('pengajuan-non-mbr-2'));
+        } else {
+            return redirect(route('dashboard'));
         }
     }
     public function kirimuser(Request $request)
