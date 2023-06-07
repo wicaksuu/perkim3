@@ -51,16 +51,37 @@ import { Link } from "@inertiajs/vue3";
                                         <p class="text-gray-500 text-sm font-bold tracking-wide"> Baru </p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap"> 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                                 
+                                        Jalan. Slawesi ...
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap"> 
                                         <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Disahkan </span> 
                                     </td>
                                     <td class="px-6 py-4 text-center"> 
-                                        <a href="#" class="text-purple-800 hover:underline pl-2">Edit</a> 
-                                        <a href="#" class="text-purple-800 hover:underline pl-2">Hapus</a> 
                                         <a href="#" class="text-purple-800 hover:underline pl-2">Maps</a> 
                                         <a href="#" class="text-purple-800 hover:underline pl-2">Riwayat</a> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"> 
+                                    2
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-wrap">
+                                        <p class=""> Green Garden </p>
+                                        <p class="text-gray-500 text-sm font-semibold tracking-wide"> PT. Sejahtera </p>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-wrap">
+                                        <p class=""> 1CNSD87312NKJASD </p>
+                                        <p class="text-gray-500 text-sm font-bold tracking-wide"> Baru </p>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-wrap"> 
+                                        Jalan. Slawesi ...
+                                   </td>
+                                    <td class="px-6 py-4 whitespace-wrap"> 
+                                        <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Diterbitkan </span> 
+                                    </td>
+                                    <td class="px-6 py-4 text-center"> 
+                                        <a href="https://maps.google.com/maps?ll=-7.6196,111.4742&z=15&t=m&hl=en-US&gl=US&mapclient=embed&q=7%C2%B037%2710.6%22S%20111%C2%B028%2727.1%22E%20-7.619600%2C%20111.474200@-7.619599999999999,111.4742" class="text-purple-800 hover:underline pl-2">Maps</a> 
+                                        <a href="#" class="text-purple-800 hover:underline pl-2">Dokumen Penerbitan</a> 
                                     </td>
                                 </tr>
                             </tbody>

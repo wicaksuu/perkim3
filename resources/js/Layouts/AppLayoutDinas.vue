@@ -31,10 +31,6 @@ const logout = () => {
 };
 </script>
 
-<style>
-/* @import "@/assets/css/icons.css";
-@import "@/assets/css/tailwind.css"; */
-</style>
 
 <template>
     <div>
@@ -66,16 +62,46 @@ const logout = () => {
                                     Dashboard
                                 </NavLink>
                             </div>
-                            <!-- <div
+                            <div
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('data-perusahaan')"
-                                    :active="route().current('data-perusahaan')"
+                                    :href="route('daftar-terverifikasi')"
+                                    :active="route().current('daftar-terverifikasi')"
                                 >
-                                    Data Perusahaan
+                                    Daftar Terverifikasi
                                 </NavLink>
-                            </div> -->
+                            </div>
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                            >
+                                <NavLink
+                                    :href="route('daftar-ditolak')"
+                                    :active="route().current('daftar-ditolak')"
+                                >
+                                    Daftar Ditolak
+                                </NavLink>
+                            </div>
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                            >
+                                <NavLink
+                                    :href="route('menunggu-dpmptsp')"
+                                    :active="route().current('menunggu-dpmptsp')"
+                                >
+                                    Menunggu DPMPTSP
+                                </NavLink>
+                            </div>
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                            >
+                                <NavLink
+                                    :href="route('arsip')"
+                                    :active="route().current('arsip')"
+                                >
+                                    Arsip
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

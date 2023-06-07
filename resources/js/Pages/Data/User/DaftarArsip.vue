@@ -2,19 +2,8 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import "@/assets/libs/dropzone/min/dropzone.min.js";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import DropDown from "@/Components/perkim/DropDown.vue";
-import DD2 from "@/Components/perkim/DD2.vue";
 </script>
 
-<style>
-@import "@/assets/libs/dropzone/min/dropzone.min.css";
-
-@import "@/assets/libs/@simonwep/pickr/themes/classic.min.css";
-@import "@/assets/libs/@simonwep/pickr/themes/monolith.min.css";
-@import "@/assets/libs/@simonwep/pickr/themes/nano.min.css";
-
-@import "@/assets/libs/flatpickr/flatpickr.min.css";
-</style>
 
 <template>
     <AppLayout title="Dashboard">
@@ -31,7 +20,7 @@ import DD2 from "@/Components/perkim/DD2.vue";
                 >
                 <center>
                                     <table>
-                                        <thead class="text-sm text-gray-700 dark:text-gray-100">
+                                        <thead class="text-sm text-gray-700 ">
                                             <tr>
                                                 <th scope="col" class="px-2 py-2">
                                                     No
@@ -69,7 +58,7 @@ import DD2 from "@/Components/perkim/DD2.vue";
                                         </thead>
                                         <tbody>
                                             
-                                            <tr class="bg-white border-b border-gray-50 dark:bg-zinc-700 dark:border-zinc-600">
+                                            <tr class="bg-white border-b border-gray-50 ">
                                                 <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap ">
                                                     1
                                                 </th>
@@ -111,7 +100,7 @@ import DD2 from "@/Components/perkim/DD2.vue";
                                                 </td>
                                             </tr>
                                             
-                                            <tr class="bg-white border-b border-gray-50 dark:bg-zinc-700 dark:border-zinc-600">
+                                            <tr class="bg-white border-b border-gray-50 ">
                                                 <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap ">
                                                     2
                                                 </th>

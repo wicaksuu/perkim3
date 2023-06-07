@@ -66,16 +66,16 @@ const logout = () => {
                                     Dashboard
                                 </NavLink>
                             </div>
-                            <!-- <div
+                            <div
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('data-perusahaan')"
-                                    :active="route().current('data-perusahaan')"
+                                    :href="route('arsip')"
+                                    :active="route().current('arsip')"
                                 >
-                                    Data Perusahaan
+                                    Arsip
                                 </NavLink>
-                            </div> -->
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

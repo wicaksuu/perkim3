@@ -20,13 +20,14 @@ use function PHPUnit\Framework\returnSelf;
 */
 
 Route::get('/', function () {
+    return view('Welcome');
     return redirect('/login');
-    // return Inertia::render('Welcome', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
     return view('Welcome');
 });
 
@@ -39,12 +40,77 @@ Route::middleware([
 ])->group(function () {
 
 
+    Route::get('/arsip', function () {
+        switch (Auth::user()->role) {
+            case 'Dinas':
+                return Inertia::render('Data/Dinas/DaftarArsip');
+                break;
+            case 'Kepala Dinas':
+                return Inertia::render('Data/KepalaDinas/DaftarArsip');
+                break;
+            case 'DPMPTSP':
+                return Inertia::render('Data/Dpmptsp/DaftarArsip');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('arsip');
+
+
+    Route::get('/menunggu-dpmptsp', function () {
+        switch (Auth::user()->role) {
+            case 'Dinas':
+                return Inertia::render('Data/Dinas/DaftarAntrianDpmptsp');
+                break;
+            case 'Kepala Dinas':
+                return Inertia::render('Data/KepalaDinas/DaftarAntrianDpmptsp');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('menunggu-dpmptsp');
+
+    Route::get('/daftar-ditolak', function () {
+        switch (Auth::user()->role) {
+            case 'Dinas':
+                return Inertia::render('Data/Dinas/DaftarDitolak');
+                break;
+            case 'Kepala Dinas':
+                return Inertia::render('Data/KepalaDinas/DaftarDitolak');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('daftar-ditolak');
+
+    Route::get('/daftar-terverifikasi', function () {
+        switch (Auth::user()->role) {
+            case 'Dinas':
+                return Inertia::render('Data/Dinas/DaftarTerverifikasi');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('daftar-terverifikasi');
 
 
     Route::get('/dashboard', function () {
         switch (Auth::user()->role) {
             case 'User':
                 return Inertia::render('Data/User/Dashboard');
+                break;
+            case 'Dinas':
+                return Inertia::render('Data/Dinas/Dashboard');
+                break;
+            case 'Kepala Dinas':
+                return Inertia::render('Data/KepalaDinas/Dashboard');
+                break;
+            case 'DPMPTSP':
+                return Inertia::render('Data/Dpmptsp/Dashboard');
                 break;
             default:
                 return redirect('/');
@@ -128,54 +194,5 @@ Route::middleware([
         }
     })->name('kirim-submit');
     
-    // Route::get('/dashboard', function () {
-    //     return Inertia::render('Dashboard');
-    // })->name('dashboard');
-
-    Route::get('/data-perusahaan', function () {
-        return Inertia::render('Data/DataPerusahaan');
-    })->name('data-perusahaan');
-
-    Route::get('/data-pemohon', function () {
-        return Inertia::render('Data/DataPemohon');
-    })->name('data-pemohon');
-
-
-
-    Route::get('/riwayat', function () {
-        return Inertia::render('Riwayat');
-    })->name('riwayat');
-
-
-    Route::get('/dashboard/dinas', function () {
-        return Inertia::render('Data/Dinas/Dashboard');
-    })->name('dinas-dashboard');
-    Route::get('/dashboard/dinas/ditolak', function () {
-        return Inertia::render('Data/Dinas/DaftarDitolak');
-    })->name('dinas-daftar-ditolak');
-    Route::get('/dashboard/dinas/diterima', function () {
-        return Inertia::render('Data/Dinas/DaftarTerverifikasi');
-    })->name('dinas-daftar-diterima');
-
-
-
-    Route::get('/dashboard/kepala-dinas', function () {
-        return Inertia::render('Data/KepalaDinas/Dashboard');
-    })->name('kepala-dinas-dashboard');
-
-    Route::get('/dashboard/kepala-dinas/dpmptsp', function () {
-        return Inertia::render('Data/KepalaDinas/DaftarAntrianDpmptsp');
-    })->name('kepala-dinas-dashboard-dpmptsp');
-
-
-    Route::get('/arsip', function () {
-        return Inertia::render('Data/DaftarArsip');
-    })->name('arsip');
-
-
-
-    Route::get('/dashboard/dpmptsp', function () {
-        return Inertia::render('Data/Dpmptsp/Dashboard');
-    })->name('dpmptsp-dashboard');
 
 });

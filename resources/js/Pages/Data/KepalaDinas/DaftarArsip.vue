@@ -1,13 +1,15 @@
 <script setup>
-import AppLayoutDpmptsp from "@/Layouts/AppLayoutDpmptsp.vue";
+import AppLayoutKepalaDinas from "@/Layouts/AppLayoutKepalaDinas.vue";
+import "@/assets/libs/dropzone/min/dropzone.min.js";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 </script>
 
+
 <template>
-    <AppLayoutDpmptsp title="Dashboard">
+    <AppLayoutKepalaDinas title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Daftar Menunggu Persetujuan
+                Daftar Arsip
             </h2>
         </template>
 
@@ -30,10 +32,10 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                                     Nama Perumahan
                                                 </th>
                                                 <th scope="col" class="px-2 py-2">
-                                                    No. Pengesahan
+                                                    No. Pengesahan Lama
                                                 </th>
                                                 <th scope="col" class="px-2 py-2">
-                                                    No. Pengajuan
+                                                    No. Pengesahan
                                                 </th>
 
                                                 <th scope="col" class="px-2 py-2">
@@ -44,7 +46,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                                     Alamat Perumahan 
                                                 </th>
                                                 <th scope="col" class="px-2 py-2">
-                                                    Tanggal TTD Kepala Dinas 
+                                                    Tanggal Pengesahaan 
                                                 </th>
                                                 <th scope="col" class="px-2 py-2">
                                                     Status
@@ -87,13 +89,13 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                                 </td>
                                                 <td class="px-2 py-2 ">
                                                     <div class="text-green-700">
-                                                         Telah di TTD Oleh Kepala Dinas Perkim
+                                                         Disahkan
 
                                                     </div>
                                                 </td>
                                                 <td class="px-2 py-2 ">
                                                     <div class="p-1">
-                                                        <PrimaryButton>Terbitkan</PrimaryButton>
+                                                        <PrimaryButton>Buka</PrimaryButton>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -129,13 +131,13 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                                 </td>
                                                 <td class="px-2 py-2 ">
                                                     <div class="text-green-700">
-                                                         Telah di TTD Oleh Kepala Dinas Perkim
+                                                         Disahkan
 
                                                     </div>
                                                 </td>
                                                 <td class="px-2 py-2 ">
                                                     <div class="p-1">
-                                                        <PrimaryButton>Terbitkan</PrimaryButton>
+                                                        <PrimaryButton>Buka</PrimaryButton>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -147,5 +149,5 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                 </div>
             </div>
         </div>
-    </AppLayoutDpmptsp>
+    </AppLayoutKepalaDinas>
 </template>
