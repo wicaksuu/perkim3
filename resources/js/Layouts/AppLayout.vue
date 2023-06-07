@@ -31,10 +31,6 @@ const logout = () => {
 };
 </script>
 
-<style>
-/* @import "@/assets/css/icons.css";
-@import "@/assets/css/tailwind.css"; */
-</style>
 
 <template>
     <div>

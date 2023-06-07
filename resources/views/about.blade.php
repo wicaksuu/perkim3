@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Sistem Informasi Pengendalian Pembangunan Perumahan">
-<meta name="author" content="wicaksu">
+    <meta name="description" content="Sistem Informasi Pengendalian Pembangunan Perumahan">
+    <meta name="author" content="wicaksu">
 
-<title>Si-Pedalrum | Sistem Informasi Pengendalian Pembangunan Perumahan</title>
+    <title>Si-Pedalrum | Sistem Informasi Pengendalian Pembangunan Perumahan</title>
 
-<link rel="shortcut icon" type="image/x-icon"
+    <link rel="shortcut icon" type="image/x-icon"
         href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Seal_of_Madiun_Regency.svg/1200px-Seal_of_Madiun_Regency.svg.png">
 
     <!-- Font Awesome CSS -->
@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="css/elegant-font-icons.css">
     <!-- Flat Icons CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
-<!-- animate CSS -->
-<link rel="stylesheet" href="css/animate.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Slicknav CSS -->
     <link rel="stylesheet" href="css/slicknav.min.css">
     <!--Slick Slider-->
-<link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick.css">
     <!--Slider CSS-->
     <link rel="stylesheet" href="css/slider.css">
-<!-- Venobox CSS -->
-<link rel="stylesheet" href="css/venobox/venobox.css">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="css/venobox/venobox.css">
     <!-- OWL-Carousel CSS -->
     <link rel="stylesheet" href="css/owl.carousel.css">
     <!-- Main CSS -->
@@ -51,19 +51,19 @@
     <header id="header" class="header-section">
         <div class="container">
             <nav class="navbar ">
-<a href="/" class="navbar-brand">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Seal_of_Madiun_Regency.svg/1200px-Seal_of_Madiun_Regency.svg.png"
-        alt="Kabupaten Madiun" style="height: 50px">
-</a>
+                <a href="/" class="navbar-brand">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Seal_of_Madiun_Regency.svg/1200px-Seal_of_Madiun_Regency.svg.png"
+                        alt="Kabupaten Madiun" style="height: 50px">
+                </a>
                 <div class="d-flex menu-wrap">
                     <div id="mainmenu" class="mainmenu">
-<ul class="nav">
-<li><a data-scroll class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a> </li>
-<li><a href="{{ route('login') }}">Masuk</a></li>
-<li><a href="{{ route('register') }}">Daftar</a></li>
-<li><a href="{{ route('login') }}">Regulasi</a></li>
-<li><a href="{{ route('login') }}">Panduan</a></li>
-<li><a href="{{ route('about') }}">Tentang</a></li>
+                        <ul class="nav">
+                            <li><a href="/">Home<span class="sr-only">(current)</span></a> </li>
+                            <li><a href="{{ route('login') }}">Masuk</a></li>
+                            <li><a href="{{ route('register') }}">Daftar</a></li>
+                            <li><a href="{{ route('login') }}">Regulasi</a></li>
+                            <li><a href="{{ route('login') }}">Panduan</a></li>
+                            <li><a class="nav-link active" href="{{ route('about') }}">Tentang</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,52 +74,43 @@
 
     <div class="header-height"></div>
 
-<div id="main-slider" class="dl-slider">
-    <div class="single-slide">
-        <div class="bg-img kenburns-top-right" style="background-image: url(img/slider-1.jpg);"></div>
-        <div class="overlay"></div>
-<div class="slider-content-wrap d-flex align-items-center text-left">
-    <div class="container">
-<div class="slider-content">
-    <div class="dl-caption medium">
-        <div class="inner-layer">
-            <div data-animation="fade-in-right" data-delay="1s">Pemerintah Kabupaten Madiun</div>
+    <section class="page-header padding">
+        <div class="container">
+            <div class="page-content text-center">
+                <h2>Tentang Si-PEDALRUM</h2>
+                <p>Sistem Informasi Pengendalian Pembangunan Perumahan</p>
+            </div>
         </div>
-</div>
-<div class="dl-caption dl-border" data-animation="fade-in-left" data-delay="0s"></div>
-<div class="dl-caption big">
-    <div class="inner-layer">
-<div data-animation="fade-in-left" data-delay="2s">Si-PEDALRUM</div>
-    </div>
-</div>
-<div class="dl-caption big">
-    <div class="inner-layer">
-<div data-animation="fade-in-left" data-delay="2.5s">Sistem Informasi Pengendalian</div>
-        <div data-animation="fade-in-left" data-delay="2.5s">Pembangunan Perumahan</div>
-    </div>
-</div>
-<div class="dl-caption small">
-    <div class="inner-layer">
-<div data-animation="fade-in-left" data-delay="3s"></div>
-    </div>
-</div>
-<div class="dl-btn-group">
-    <div class="inner-layer">
-        <a href="{{ route('login') }}" class="dl-btn" data-animation="fade-in-left" data-delay="3.5s">Masuk
-            <i class="arrow_right"></i></a>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!--Slide-1-->
-</div>
-    <!--/.widget-section-->
+    </section>
+    <!--/.page-header-->
+
+    <section class="about-section section-2 padding">
+        <div class="container">
+            <div class="row about-wrap">
+                <div class="col-md-12 xs-padding">
+                    <div class="about-content">
+                        <h2>SI-PEDALRUM</h2>
+                        <p>Merupakan Sistem Informasi Pengendalian Pembangunan Perumahan dipergunakan Pelaku
+                            Usaha Pembangunan
+                            Perumahan dan Pemerintah Kabupaten Madiun untuk:</p>
+                        <ul class="about-list">
+                            <li><i class="fas fa-check"></i>Pengajuan rencana tapak / site plan.</li>
+                            <li><i class="fas fa-check"></i>Verifikasi rencana tapak / site plan.</li>
+                            <li><i class="fas fa-check"></i>Pengesahan rencana tapak / siteplan.</li>
+                            <li><i class="fas fa-check"></i>Penerbitan rencana tapak / siteplan.</li>
+                            <li><i class="fas fa-check"></i>Pengendalian pembangunan, pemasaran / perjanjian jual-beli,
+                                dan penyerahan PSU perumahan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.about-section-->
 
     <footer class="footer-section align-center">
         <div class="container">
-<p>&copy; 2023 Pemerintah Kabupaten Madiun</p>
+            <p>&copy; 2023 Pemerintah Kabupaten Madiun</p>
         </div>
     </footer><!-- /.footer-section -->
 
@@ -151,8 +142,6 @@
     <script src="js/vendor/jquery.mb.YTPlayer.min.js"></script>
     <!-- Wow JS -->
     <script src="js/vendor/wow.min.js"></script>
-    <!-- Google Map JS -->
-{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPH8h1UpcK01BdcvoZeOzq-_wJqRxN1Pc"></script> --}}
     <!-- Main JS -->
     <script src="js/main.js"></script>
 

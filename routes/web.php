@@ -30,8 +30,9 @@ Route::get('/', function () {
     ]);
     return view('Welcome');
 });
-
-
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 Route::middleware([
     'auth:sanctum',
