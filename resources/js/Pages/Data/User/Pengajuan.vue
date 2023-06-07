@@ -206,7 +206,7 @@ const clearInput = () => {
                                                 <div class="pr-4">
                                                     <label class="flex items-center">
                                                         <Checkbox v-model:checked="form.klasifikasi_kegiatan_usaha_sesuai_tercantum_dalam_akte_pendirian" name="klasifikasi_kegiatan_usaha_sesuai_tercantum_dalam_akte_pendirian" />
-                                                        <span class="ml-2 text-sm text-gray-600">Apakah Klasifikasi kegiatan usaha sesuai tercantum dalam akte pendirian</span>
+                                                        <span class="ml-2 text-sm text-gray-600">Klasifikasi kegiatan usaha sesuai tercantum dalam akte pendirian</span>
                                                     </label>
                                                         <InputError :message="form.errors.klasifikasi_kegiatan_usaha_sesuai_tercantum_dalam_akte_pendirian" class="mt-2" />  
                                                 </div>
@@ -239,7 +239,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Kesesuaian Kegiatan Pemanfaatan Ruang/Keterangan Rencana Kabupaten" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_a" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_a" class="mt-2" />                     
@@ -247,7 +247,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Memiliki dokumen lingkungan hidup" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_b" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_b" class="mt-2" />                     
@@ -255,7 +255,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat pernyataan bermeterai dari pemohon yang menyatakan bahwa bentuk tapak dalam gambar rencana tapak sudah sesuai dengan gambar pada buku sertifikat dan sesuai ukuran dilokasi saat ini" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_c" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_c" class="mt-2" />                     
@@ -264,7 +264,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat Pernyataan bermeterai yang menyatakan bahwa bangunan tidak berada dalam sempadan sungai / danau (disesuaikan lokasi)" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_d" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_d" class="mt-2" />                     
@@ -273,7 +273,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat Pernyataan bermeterai yang menyatakan bahwa bangunan tidak berada dalam sempadan jaringan irigasi (disesuaikan lokasi)" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_e" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_e" class="mt-2" />                     
@@ -282,7 +282,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat Pernyataan bermeterai yang menyatakan bahwa bangunan didirikan sesuai ketentuan Garis Sempadan Bangunan" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_f" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_f" class="mt-2" />                     
@@ -291,19 +291,37 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat Pernyataan Kesanggupan menyediakan sarana utilitas : Jaringan listrik, Jaringan air bersih, Jaringan air limbah dan air kotor dan prasarana dan sarana tempat sampah" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_g" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_g" class="mt-2" />                     
                                     </div>
 
                                     <div class="mb-8">
-                                        <InputLabel value="Surat Keterangan bebas genangan/banjir dari instansi yang berwenang atau terkait upload bukti Menyediakan lahan pemakaman dilokasi perumahan paling sedikit 2% dari luas lahan perumahan" />
+                                        <InputLabel value="Surat Keterangan bebas genangan/banjir dari instansi yang berwenang " />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_h" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_h" class="mt-2" />                     
+                                    </div>
+
+                                    <div class="mb-8">
+                                        <InputLabel value="Surat keanggotaan dari asosiasi / organisasi pembangunan perumahan atau pengembang" />
+                                            <label class="block mt-3">
+                                                <span class="sr-only">Pilih File</span>
+                                                <input ref="kode_k" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
+                                            </label>    
+                                        <InputError :message="form.errors.ref_kode_k" class="mt-2" />                     
+                                    </div>
+
+                                    <div class="mb-8">
+                                        <InputLabel value="Surat rekomendasi yang diterbitkan oleh asosiasi / organisasi pembangunan perumahan atau pengembang yang ada di Kabupaten Madiun" />
+                                            <label class="block mt-3">
+                                                <span class="sr-only">Pilih File</span>
+                                                <input ref="kode_l" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
+                                            </label>    
+                                        <InputError :message="form.errors.ref_kode_l" class="mt-2" />                     
                                     </div>
                                 </div>   
                                     
@@ -322,7 +340,8 @@ const clearInput = () => {
                                 <h6 class="text-15 font-semibold text-gray-700">
                                     2.2 Dokumen Administrasi
                                 </h6>
-                                <i>jika dokumen di upload berarti (ya), dokumen tidak wajib</i>
+                                <p>Menyediakan lahan pemakaman dilokasi perumahan paling sedikit 2% dari luas lahan perumahan</p>
+                                <i class="font-semibold">jika tidak, pilih salah satu di bawah ini</i>
                                 <hr>
                             </div>
                             <div class="container mx-auto">
@@ -331,7 +350,7 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Menyediakan tempat pemakaman pada lahan milik sendiri diluar lokasi perumahan paling sedikit 2% dari luas lahan perumahan" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_i" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_i" class="mt-2" />                     
@@ -339,27 +358,10 @@ const clearInput = () => {
                                     <div class="mb-8">
                                         <InputLabel value="Surat Pernyataan dari Kepala Desa/Lurah setempat yang menyatakan tidak keberatan digunakan untuk warga perumahan yang meninggal" />
                                             <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
+                                                <span class="sr-only">Pilih File</span>
                                                 <input ref="kode_j" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
                                             </label>    
                                         <InputError :message="form.errors.ref_kode_j" class="mt-2" />                     
-                                    </div>
-                                    <div class="mb-8">
-                                        <InputLabel value="Surat keanggotaan dari asosiasi / organisasi pembangunan perumahan atau pengembang" />
-                                            <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
-                                                <input ref="kode_k" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_kode_k" class="mt-2" />                     
-                                    </div>
-
-                                    <div class="mb-8">
-                                        <InputLabel value="Surat rekomendasi yang diterbitkan oleh asosiasi / organisasi pembangunan perumahan atau pengembang yang ada di Kabupaten Madiun" />
-                                            <label class="block mt-3">
-                                                <span class="sr-only">Choose File</span>
-                                                <input ref="kode_l" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_kode_l" class="mt-2" />                     
                                     </div>
                                 </div>   
                                     
@@ -387,7 +389,6 @@ const clearInput = () => {
                                             <div class="mb-3">
                                                 <label class="block font-medium text-gray-700 mb-2">Peruntukan Pembangunan Perumahan</label>
                                                 <select v-model="mbrOrNon" class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0" >
-                                                    <option >Silahkan Pilih</option>
                                                     <option value="MBR">MBR Luas Lahan 0.5ha sd 5.0ha </option>
                                                     <option value="NON MBR Jumlah Unit Kurang dari 100">NON MBR Jumlah Unit Kurang dari 100 </option>
                                                     <option value="NON MBR Jumlah Unit 100 sd 3000">NON MBR Jumlah Unit 100 sd 3000 </option>

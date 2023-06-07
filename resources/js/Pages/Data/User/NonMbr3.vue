@@ -17,10 +17,11 @@ const gambar_rencana_pdf = ref(null);
 
 const form = useForm({
     luas_lahan: '',
-    kode_unik: 'MBR',
+    kode_unik: 'NON MBR Jumlah Unit Lebih dari 3000',
     persyaratan_prasarana_saran_dan_utilitas_umum: false,
     wajib: false,
     persyaratan_penyajian_gambar_rencana_tapak: false,
+    komposisi_perbandingan_jumlah_klasifikasi_rumah_mewah: '',
     ref_sertifikat_tanah: null,
     ref_akta_jual_beli: null,
     ref_bukti_pelunasan_sppt_pbb: null,
@@ -35,8 +36,8 @@ const form = useForm({
     tanggal_jadwal_rencana_dimulainya_pemasaran:'',
     tanggal_jadwal_dimulainya_perjanjian_jual_beli:'',
     tanggal_jadwal_rencana_selesai_pembangunan_psu:'',
-    tanggal_jadwal_rencana_penyerahan_psu:'',
-    
+    tanggal_jadwal_rencana_penyerahan_psu: '',
+
 });
 
 
@@ -96,7 +97,7 @@ const clearPhotoFileInput = () => {
     <AppLayout title="Pengajuan">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Pengajuan Peruntukan MBR
+                Pengajuan Peruntukan NON MBR Jumlah Unit Lebih dari 3000
             </h2>
 
         </template>
@@ -116,7 +117,7 @@ const clearPhotoFileInput = () => {
                                         <div class="mb-4">
                                             <InputLabel for="luas_lahan" value="Luas Lahan (m2)" />
                                             <TextInput id="luas_lahan" ref="currentPasswordInput" v-model="form.luas_lahan" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.luas_lahan" class="mt-2" />                                    
+                                            <InputError :message="form.errors.luas_lahan" class="mt-2" />
                                         </div>
                                     </div>
                                 </div>
@@ -142,29 +143,29 @@ const clearPhotoFileInput = () => {
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input ref="sertifikat_tanah" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_sertifikat_tanah" class="mt-2" />                     
+                                            </label>
+                                        <InputError :message="form.errors.ref_sertifikat_tanah" class="mt-2" />
                                     </div>
                                     <div class="mb-8">
                                         <InputLabel value="Akte jual beli/akte pengikatan perjanjian jual beli tanah/akte pelepasan hak atas tanah dari pemilik tanah kepada Badan Hukum" />
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input ref="akta_jual_beli" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_akta_jual_beli" class="mt-2" />                     
+                                            </label>
+                                        <InputError :message="form.errors.ref_akta_jual_beli" class="mt-2" />
                                     </div>
                                     <div class="mb-8">
                                         <InputLabel value="Bukti pelunasan SPPT-PBB tahun terakhir pada saat diajukan permohonan" />
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input ref="bukti_pelunasan_sppt_pbb" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_bukti_pelunasan_sppt_pbb" class="mt-2" />                     
+                                            </label>
+                                        <InputError :message="form.errors.ref_bukti_pelunasan_sppt_pbb" class="mt-2" />
                                     </div>
 
-                                    
-                                </div>   
-                                    
+
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -186,16 +187,64 @@ const clearPhotoFileInput = () => {
                                 <div class="lg:flex">
                                     <div class="px-4">
                                         <div class="mb-4">
+
                                             <div class="mb-3">
                                                 <label class="block font-medium text-gray-700 mb-2">Keberadaan Perumahan</label>
                                                 <select v-model="keberadaan_perumahan" class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0" >
-                                                    <option value="Satu Lokasi">Satu Lokasi </option>
+                                                    <option value="Satu Lokasi">Satu Hamparan </option>
                                                 </select>
-                                                <InputError :message="form.errors.ref_keberadaan_perumahan" class="mt-2" />                                    
+                                                <InputError :message="form.errors.ref_keberadaan_perumahan" class="mt-2" />
+                                            </div>
 
-                                            </div>                    
+                                            <div class="mb-3">
+                                                <label class="block font-medium text-gray-700 mb-2">Komposisi perbandingan jumlah klasiikasi Rumah mewah, Rumah menengah, dan Rumah sederhana yang harus dibangun</label>
+                                                <select v-model="komposisi_perbandingan_jumlah_klasifikasi_rumah_mewah" class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0" >
+                                                    <option value="1 (satu) Rumah mewah berbanding paling sedikit 2 (dua) Rumah menengah dan berbanding paling sedikit 3 (tiga) Rumah sederhana">1 (satu) Rumah mewah berbanding paling sedikit 2 (dua) Rumah menengah dan berbanding paling sedikit 3 (tiga) Rumah sederhana</option>
+                                                </select>
+                                                <InputError :message="form.errors.komposisi_perbandingan_jumlah_klasifikasi_rumah_mewah" class="mt-2" />
+                                            </div>
+
+                                            <div class="mb-8 pt-3">
+                                                <div class="pr-4">
+                                                    <p>Rumah sederhana adalah rumah sederhana subsidi dan non subsidi </p>
+                                                    <i>Prosentase perbandingan klasifikasi Rumah sederhana subsidi dan Rumah sederhana nonsubsidi</i>
+                                                    <label class="flex items-center pt-2">
+                                                        <Checkbox v-model:checked="form.persyaratan_prasarana_saran_dan_utilitas_umum" name="persyaratan_prasarana_saran_dan_utilitas_umum" />
+                                                            <span class="ml-2 text-sm text-gray-600">3 (tiga) Rumah sederhana subsidi berbanding 1 (satu) Rumah sederhana nonsubsidi dengan perhitungan komposisi persentase 75% Rumah sederhana subsidi berbanding 25% Rumah sederhana nonsubsidi.</span>
+                                                    </label>
+                                                    <InputError :message="form.errors.persyaratan_prasarana_saran_dan_utilitas_umum" class="mt-2" />
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>                                   
+                                    </div>
+                                </div>
+
+                                <div class="lg:flex pt-6">
+                                    <div class="lg:w-1/2 px-4">
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_mewah" value="Jumlah unit klasifikasi Rumah Mewah" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_mewah" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_mewah" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_mewah" class="mt-2" />
+                                        </div>
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_menengah" value="Jumlah unit klasifikasi Rumah Menengah" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_menengah" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_menengah" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_menengah" class="mt-2" />
+                                        </div>
+                                    </div>
+                                    <div class="lg:w-1/2 px-4">
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" value="Jumlah unit klasifikasi Rumah Sederhana Non Subsidi" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" class="mt-2" />
+                                        </div>
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_sederhana_subsidi" value="*Jumlah unit klasifikasi Rumah Sederhana Subsidi" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_sederhana_subsidi" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_sederhana_subsidi" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_sederhana_subsidi" class="mt-2" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +263,7 @@ const clearPhotoFileInput = () => {
                             <div class="container mx-auto">
                                 <div class="lg:flex">
                                 <div class="px-4">
-                                    <div class="mb-8">                                   
+                                    <div class="mb-8">
                                         <div class="pr-4">
                                             <p>1. Jalan masuk / jalan utama / jalan pembagi dengan lebar ruang milik jalan (pagar ke pagar rumah/ROW) paling sedikit 7 meter dan lebar perkerasan jalan paling sedikit 3,5 meter</p>
                                             <p>2. Jalan pembantu dengan lebar ruang milik jalan (pagar ke pagar/ROW) paling sedikit 6 meter dan lebar perkerasan jalan paling sedikit 3,0 meter</p>
@@ -230,13 +279,13 @@ const clearPhotoFileInput = () => {
                                                 <Checkbox v-model:checked="form.persyaratan_prasarana_saran_dan_utilitas_umum" name="persyaratan_prasarana_saran_dan_utilitas_umum" />
                                                     <span class="ml-2 text-sm text-gray-600">Dengan ini saya setuju dengan semua persyaratan di atas</span>
                                             </label>
-                                            <InputError :message="form.errors.persyaratan_prasarana_saran_dan_utilitas_umum" class="mt-2" />  
+                                            <InputError :message="form.errors.persyaratan_prasarana_saran_dan_utilitas_umum" class="mt-2" />
                                         </div>
                                     </div>
 
-                                    
-                                </div>   
-                                    
+
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -255,31 +304,30 @@ const clearPhotoFileInput = () => {
                                 <div class="lg:flex">
                                     <div class="px-4">
                                         <div class="mb-4">
-                                            <InputLabel for="luas_ruang_milik_jalan" value="Luas ruang milik jalan (pagar ke pagar/ROW) (m2)" />
+                                            <InputLabel for="luas_ruang_milik_jalan" value="*Luas ruang milik jalan (pagar ke pagar/ROW) (m2)" />
                                             <TextInput id="luas_ruang_milik_jalan" ref="luas_ruang_milik_jalan" v-model="form.luas_ruang_milik_jalan" type="number" class="mt-1 block w-full" autocomplete="luas_ruang_milik_jalan" placeholder="100" />
-                                            <InputError :message="form.errors.luas_ruang_milik_jalan" class="mt-2" />                                    
+                                            <InputError :message="form.errors.luas_ruang_milik_jalan" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <InputLabel for="tempat_ibadah" value="Tempat ibadah (m2)" />
                                             <TextInput id="tempat_ibadah" ref="currentPasswordInput" v-model="form.tempat_ibadah" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.tempat_ibadah" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tempat_ibadah" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <InputLabel for="ruang_terbuka_hijau" value="Ruang terbuka hijau (taman, tempat main, lapangan olahraga, dan/atau jalur hijau) (m2)" />
                                             <TextInput id="ruang_terbuka_hijau" ref="currentPasswordInput" v-model="form.ruang_terbuka_hijau" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.ruang_terbuka_hijau" class="mt-2" />                                    
+                                            <InputError :message="form.errors.ruang_terbuka_hijau" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <InputLabel for="makam" value="Makam (lahan pemakaman pada lahan perumahan dan/atau milik sendiri diluar lokasi perumahan) (m2)" />
                                             <TextInput id="makam" ref="currentPasswordInput" v-model="form.makam" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.makam" class="mt-2" />                                    
+                                            <InputError :message="form.errors.makam" class="mt-2" />
                                         </div>
-
                                         <div class="mb-4">
                                             <InputLabel for="makam" value="Lain - lain PSU bila ada" class="pb-3"/>
                                             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >
                                                 Tambah Psu
-                                            </PrimaryButton>                                                                             
+                                            </PrimaryButton>
                                         </div>
                                     </div>
                                 </div>
@@ -300,7 +348,7 @@ const clearPhotoFileInput = () => {
                             <div class="container mx-auto">
                                 <div class="lg:flex">
                                 <div class="px-4">
-                                    <div class="mb-8">                                   
+                                    <div class="mb-8">
                                         <div class="pr-4">
                                             <p>1. Skala gambar antara 1 : 1000 sampai 1 : 200</p>
                                             <p>2. batas bingkai gambar mengikuti margin sebagai berikut : 2 cm inside dari garis sisi kiri luar dan 1 cm inside dari garis sisi atas, bawah dan kanan</p>
@@ -312,13 +360,13 @@ const clearPhotoFileInput = () => {
                                                 <Checkbox v-model:checked="form.persyaratan_penyajian_gambar_rencana_tapak" name="persyaratan_penyajian_gambar_rencana_tapak" />
                                                     <span class="ml-2 text-sm text-gray-600">Dengan ini saya setuju dengan semua persyaratan di atas</span>
                                             </label>
-                                            <InputError :message="form.errors.persyaratan_penyajian_gambar_rencana_tapak" class="mt-2" />  
+                                            <InputError :message="form.errors.persyaratan_penyajian_gambar_rencana_tapak" class="mt-2" />
                                         </div>
                                     </div>
 
-                                    
-                                </div>   
-                                    
+
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -331,39 +379,39 @@ const clearPhotoFileInput = () => {
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="m-4">
                             <h6 class="text-15 font-semibold text-gray-700 p-4">
-                                INFORMASI LAIN YANG HARUS DIISI SEBAGAI BENTUK PENGAWASAN (MONEV) PEMBANGUNAN, PENGENDALIAN PSU, DAN PENGENDALIAN JUAL BELI
+                                INFORMASI LAIN YANG HARUS DIISI SEBAGAI BENTUK PENGAWASAN (MONEV) PEMBANGUNAN dan PENGENDALIAN : PEMASARAN, JUAL BELI, PENYERAHAN PSU
                                 <hr>
                             </h6>
                             <div class="container mx-auto">
                                 <div class="lg:flex">
                                     <div class="lg:w-1/2 px-4">
                                         <div class="mb-4">
-                                            <InputLabel for="tgl_jadwaal_rencana_dimulainya_pembangunan" value="Tanggal jadwal rencana dimulainya pembangunan" />
+                                            <InputLabel for="tgl_jadwaal_rencana_dimulainya_pembangunan" value="Tanggal rencana dimulainya pembangunan" />
                                             <TextInput  id="tgl_jadwaal_rencana_dimulainya_pembangunan" ref="tgl_jadwaal_rencana_dimulainya_pembangunan" v-model="form.tgl_jadwaal_rencana_dimulainya_pembangunan" type="date" class="mt-1 block w-full" autocomplete="tgl_jadwaal_rencana_dimulainya_pembangunan" placeholder="100" />
-                                            <InputError :message="form.errors.tgl_jadwaal_rencana_dimulainya_pembangunan" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tgl_jadwaal_rencana_dimulainya_pembangunan" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <InputLabel for="tanggal_jadwal_rencana_dimulainya_pemasaran" value="Tanggal jadwal rencana dimulainya pemasaran" />
+                                            <InputLabel for="tanggal_jadwal_rencana_dimulainya_pemasaran" value="Tanggal rencana dimulainya pemasaran" />
                                             <TextInput id="tanggal_jadwal_rencana_dimulainya_pemasaran" ref="currentPasswordInput" v-model="form.tanggal_jadwal_rencana_dimulainya_pemasaran" type="date" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.tanggal_jadwal_rencana_dimulainya_pemasaran" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tanggal_jadwal_rencana_dimulainya_pemasaran" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <InputLabel for="tanggal_jadwal_dimulainya_perjanjian_jual_beli" value="Tanggal jadwal rencana dimulainya Perjanjian Pendahuluan Jual Beli (PPJB)" />
+                                            <InputLabel for="tanggal_jadwal_dimulainya_perjanjian_jual_beli" value="Tanggal rencana dimulainya Perjanjian Pendahuluan Jual Beli (PPJB)" />
                                             <TextInput id="tanggal_jadwal_dimulainya_perjanjian_jual_beli" ref="currentPasswordInput" v-model="form.tanggal_jadwal_dimulainya_perjanjian_jual_beli" type="date" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.tanggal_jadwal_dimulainya_perjanjian_jual_beli" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tanggal_jadwal_dimulainya_perjanjian_jual_beli" class="mt-2" />
                                         </div>
                                     </div>
-                                    
-                                    <div class="lg:w-1/2 px-4">    
+
+                                    <div class="lg:w-1/2 px-4">
                                         <div class="mb-4">
-                                            <InputLabel for="tanggal_jadwal_rencana_selesai_pembangunan_psu" value="Tanggal jadwal rencana selesainya pembangunan PSU" />
+                                            <InputLabel for="tanggal_jadwal_rencana_selesai_pembangunan_psu" value="Tanggal rencana selesainya pembangunan PSU" />
                                             <TextInput id="tanggal_jadwal_rencana_selesai_pembangunan_psu" ref="currentPasswordInput" v-model="form.tanggal_jadwal_rencana_selesai_pembangunan_psu" type="date" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.tanggal_jadwal_rencana_selesai_pembangunan_psu" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tanggal_jadwal_rencana_selesai_pembangunan_psu" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <InputLabel for="tanggal_jadwal_rencana_penyerahan_psu" value="Tanggal jadwal rencana penyerahan PSU ( 1 tahun setelah selesai pembangunan)" />
+                                            <InputLabel for="tanggal_jadwal_rencana_penyerahan_psu" value="Tanggal rencana penyerahan PSU ( 1 tahun setelah selesai pembangunan )" />
                                             <TextInput id="tanggal_jadwal_rencana_penyerahan_psu" ref="currentPasswordInput" v-model="form.tanggal_jadwal_rencana_penyerahan_psu" type="date" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
-                                            <InputError :message="form.errors.tanggal_jadwal_rencana_penyerahan_psu" class="mt-2" />                                    
+                                            <InputError :message="form.errors.tanggal_jadwal_rencana_penyerahan_psu" class="mt-2" />
                                         </div>
                                     </div>
                                 </div>
@@ -389,19 +437,19 @@ const clearPhotoFileInput = () => {
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input id="gambar_rencana_zip" ref="gambar_rencana_zip" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_gambar_rencana_zip" class="mt-2" />                     
+                                            </label>
+                                        <InputError :message="form.errors.ref_gambar_rencana_zip" class="mt-2" />
                                     </div>
                                     <div class="mb-8">
                                         <InputLabel value="PENGAJUAN GAMBAR RENCANA TAPAK / SITE PLAN (FORMAT PDF) YANG SUDAH TER-TANDATANGANI DAN BERSTEMPEL" />
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input id="gambar_rencana_pdf" ref="gambar_rencana_pdf" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                                            </label>    
-                                        <InputError :message="form.errors.ref_gambar_rencana_pdf" class="mt-2" />                     
-                                    </div>                                    
-                                </div>   
-                                    
+                                            </label>
+                                        <InputError :message="form.errors.ref_gambar_rencana_pdf" class="mt-2" />
+                                    </div>
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -427,9 +475,9 @@ const clearPhotoFileInput = () => {
                                                             Demikian Isian Permohonan ini saya buat dengan sebenarnya dan penuh rasa tanggung jawab. Jika dikemudian hari ditemui bahwa data/dokumen yang saya sampaikan tidak benar dan ada pemalsuan, maka saya bersedia dikenakan sanksi berupa sanksi administratif, sanksi Daftar Hitam Hitam, gugatan secara perdata, dan/atau pelaporan secara pidana kepada pihak berwenang sesuai dengan ketentuan peraturan perundang-undangan.
                                                         </span>
                                                 </label>
-                                                <InputError :message="form.errors.wajib" class="mt-2" />        
-                                        </div>                                 
-                                    </div>                                      
+                                                <InputError :message="form.errors.wajib" class="mt-2" />
+                                        </div>
+                                    </div>
                                 </div>
 
 

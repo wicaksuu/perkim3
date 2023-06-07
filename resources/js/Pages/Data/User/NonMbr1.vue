@@ -17,7 +17,7 @@ const gambar_rencana_pdf = ref(null);
 
 const form = useForm({
     luas_lahan: '',
-    kode_unik: 'MBR',
+    kode_unik: 'NON MBR Jumlah Unit Kurang dari 100',
     persyaratan_prasarana_saran_dan_utilitas_umum: false,
     wajib: false,
     persyaratan_penyajian_gambar_rencana_tapak: false,
@@ -35,7 +35,8 @@ const form = useForm({
     tanggal_jadwal_rencana_dimulainya_pemasaran:'',
     tanggal_jadwal_dimulainya_perjanjian_jual_beli:'',
     tanggal_jadwal_rencana_selesai_pembangunan_psu:'',
-    tanggal_jadwal_rencana_penyerahan_psu:'',
+    tanggal_jadwal_rencana_penyerahan_psu: '',
+    Ketersediaan_klasifikasi_rumah_sederhana_subsidi:false,
     
 });
 
@@ -96,7 +97,7 @@ const clearPhotoFileInput = () => {
     <AppLayout title="Pengajuan">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Pengajuan Peruntukan MBR
+                Pengajuan Peruntukan NON MBR Jumlah Unit Kurang dari 100
             </h2>
 
         </template>
@@ -189,13 +190,49 @@ const clearPhotoFileInput = () => {
                                             <div class="mb-3">
                                                 <label class="block font-medium text-gray-700 mb-2">Keberadaan Perumahan</label>
                                                 <select v-model="keberadaan_perumahan" class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0" >
-                                                    <option value="Satu Lokasi">Satu Lokasi </option>
+                                                    <option value="Satu Lokasi">Satu Hamparan </option>
                                                 </select>
                                                 <InputError :message="form.errors.ref_keberadaan_perumahan" class="mt-2" />                                    
 
-                                            </div>                    
+                                            </div>          
+                                            
+                                                <div class="pr-4 pt-5">
+                                                        <p>Ketersediaan klasifikasi Rumah Sederhana Subsidi </p>
+                                                    <label class="flex items-center">
+                                                        <Checkbox v-model:checked="form.Ketersediaan_klasifikasi_rumah_sederhana_subsidi" name="Ketersediaan_klasifikasi_rumah_sederhana_subsidi" />
+                                                        <span class="ml-2 text-sm text-gray-600">ada rumah sederhana subsidi dengan jumlah dibawah atau paling banyak 40% dari jumlah rumah yang akan dibangun</span>
+                                                    </label>
+                                                        <InputError :message="form.errors.Ketersediaan_klasifikasi_rumah_sederhana_subsidi" class="mt-2" />  
+                                                </div>          
                                         </div>
                                     </div>                                   
+                                </div>
+
+                                <div class="lg:flex pt-6">
+                                    <div class="lg:w-1/2 px-4">
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_mewah" value="Jumlah unit klasifikasi Rumah Mewah" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_mewah" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_mewah" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_mewah" class="mt-2" />                                    
+                                        </div>
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_menengah" value="Jumlah unit klasifikasi Rumah Menengah" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_menengah" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_menengah" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_menengah" class="mt-2" />                                    
+                                        </div>
+                                    </div>
+                                    <div class="lg:w-1/2 px-4">
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" value="Jumlah unit klasifikasi Rumah Sederhana Non Subsidi" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_sederhana_non_subsidi" class="mt-2" />                                    
+                                        </div>
+                                        <div class="mb-4">
+                                            <InputLabel for="jumlah_unit_klasifikasi_rumah_sederhana_subsidi" value="*Jumlah unit klasifikasi Rumah Sederhana Subsidi" />
+                                            <TextInput id="jumlah_unit_klasifikasi_rumah_sederhana_subsidi" ref="currentPasswordInput" v-model="form.jumlah_unit_klasifikasi_rumah_sederhana_subsidi" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
+                                            <InputError :message="form.errors.jumlah_unit_klasifikasi_rumah_sederhana_subsidi" class="mt-2" />                                    
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +292,7 @@ const clearPhotoFileInput = () => {
                                 <div class="lg:flex">
                                     <div class="px-4">
                                         <div class="mb-4">
-                                            <InputLabel for="luas_ruang_milik_jalan" value="Luas ruang milik jalan (pagar ke pagar/ROW) (m2)" />
+                                            <InputLabel for="luas_ruang_milik_jalan" value="*Luas ruang milik jalan (pagar ke pagar/ROW) (m2)" />
                                             <TextInput id="luas_ruang_milik_jalan" ref="luas_ruang_milik_jalan" v-model="form.luas_ruang_milik_jalan" type="number" class="mt-1 block w-full" autocomplete="luas_ruang_milik_jalan" placeholder="100" />
                                             <InputError :message="form.errors.luas_ruang_milik_jalan" class="mt-2" />                                    
                                         </div>
@@ -274,7 +311,6 @@ const clearPhotoFileInput = () => {
                                             <TextInput id="makam" ref="currentPasswordInput" v-model="form.makam" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
                                             <InputError :message="form.errors.makam" class="mt-2" />                                    
                                         </div>
-
                                         <div class="mb-4">
                                             <InputLabel for="makam" value="Lain - lain PSU bila ada" class="pb-3"/>
                                             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >

@@ -74,6 +74,39 @@ Route::middleware([
         }
     })->name('pengajuan-mbr');
 
+    Route::get('/pengajuan-non-mbr-1', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/NonMbr1');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('pengajuan-non-mbr-1');
+
+    Route::get('/pengajuan-non-mbr-2', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/NonMbr2');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('pengajuan-non-mbr-2');
+
+    Route::get('/pengajuan-non-mbr-3', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/NonMbr3');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('pengajuan-non-mbr-3');
+
     Route::post('/submit', function () {
         switch (Auth::user()->role) {
             case 'User':
