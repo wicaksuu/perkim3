@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Validator;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -18,6 +19,8 @@ use function PHPUnit\Framework\returnSelf;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/validate/{kode_unik}', [Validator::class, 'Validator']);
 
 Route::get('/', function () {
     return view('Welcome');
