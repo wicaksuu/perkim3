@@ -89,7 +89,7 @@ class FormDataController extends Controller
             'ref_sertifikat_tanah' => ['required', 'mimes:pdf'],
             'ref_akta_jual_beli' => ['required', 'mimes:pdf'],
             'ref_bukti_pelunasan_sppt_pbb' => ['required', 'mimes:pdf'],
-            'ref_gambar_rencana_zip' => ['required', 'mimes:pdf'],
+            'ref_gambar_rencana_zip' => ['required', 'mimes:zip'],
             'ref_gambar_rencana_pdf' => ['required', 'mimes:pdf'],
             'ref_keberadaan_perumahan' => ['required'],
             'luas_ruang_milik_jalan' => ['required', 'string', 'max:255'],
