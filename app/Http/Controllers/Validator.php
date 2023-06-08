@@ -14,8 +14,8 @@ class Validator extends Controller
         $kepala_dinas = User::where('role', 'Kepala Dinas')->first();
         $dpmptsp      = User::where('role', 'DPMPTSP')->first();
         $data         = FormData::first();
-        $arsip        = url('storage/arsip/' . $kode_unik);
-        if (file_exists('storage/arsip/' . $kode_unik)) {
+        $arsip        = url('storage/arsip/' . $kode_unik . 'pdf');
+        if (file_exists('storage/arsip/' . $kode_unik . 'pdf')) {
             return Inertia::render('Validate', [
                 'kepalaDinas' => $kepala_dinas,
                 'Dpmptsp' => $dpmptsp,
