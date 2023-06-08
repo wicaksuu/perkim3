@@ -32,7 +32,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
     return view('Welcome');
-});
+})->name('home');;
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
