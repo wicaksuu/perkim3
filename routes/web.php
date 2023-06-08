@@ -197,6 +197,28 @@ Route::middleware([
                 break;
         }
     })->name('kirim-submit');
-    
+
+
+    Route::get('/data-pemohon', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/DataPemohon');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('data-pemohon');
+
+    Route::get('/data-perusahaan', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return Inertia::render('Data/User/DataPerusahaan');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('data-perusahaan');    
 
 });

@@ -14,10 +14,20 @@ class Validator extends Controller
         $kepala_dinas = User::where('role', 'Kepala Dinas')->first();
         $dpmptsp      = User::where('role', 'DPMPTSP')->first();
         $data         = FormData::first();
-        return Inertia::render('Validate', [
-            'kepalaDinas' => $kepala_dinas,
-            'Dpmptsp' => $dpmptsp,
-            'Data' => $data
-        ]);
+        $arsip        = url('storage/arsip/' . $kode_unik);
+        if (file_exists('storage/arsip/' . $kode_unik)) {
+            return Inertia::render('Validate', [
+                'kepalaDinas' => $kepala_dinas,
+                'Dpmptsp' => $dpmptsp,
+                'Data' => $data,
+                'Arsip' => $arsip,
+                'Kode' => $kode_unik
+            ]);
+        } else {
+            return Inertia::render('NotValid', [
+                'Arsip' => $arsip,
+                'Kode' => $kode_unik
+            ]);
+        }
     }
 }
