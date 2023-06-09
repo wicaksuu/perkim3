@@ -393,7 +393,7 @@ const clearPhotoFileInput = () => {
                                         <InputError :message="form.errors.ref_gambar_rencana_zip" class="mt-2" />                     
                                     </div>
                                     <div class="mb-8">
-                                        <InputLabel value="PENGAJUAN GAMBAR RENCANA TAPAK / SITE PLAN (FORMAT PDF) YANG SUDAH TER-TANDATANGANI DAN BERSTEMPEL" />
+                                        <InputLabel value="PENGAJUAN GAMBAR RENCANA TAPAK / SITE PLAN (FORMAT PDF) YANG SUDAH TER-TANDATANGANI DAN BERSTEMPEL DENGAN UKURAN KERTAS A3" />
                                             <label class="block mt-3">
                                                 <span class="sr-only">Choose File</span>
                                                 <input id="gambar_rencana_pdf" ref="gambar_rencana_pdf" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>

@@ -1,6 +1,43 @@
 <script setup>
+import { ref } from 'vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
-import SecondaryButton from "@/Components/SecondaryButton.vue";
+import { useForm } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import ActionMessage from '@/Components/ActionMessage.vue';
+
+const props = defineProps({
+    user: Object,
+});
+
+const status_badan_usaha = ref(null);
+const form = useForm({
+    _method: 'PUT',
+    dataperusahaan: 'dataperusahaan',
+    ref_status_badan_usaha: props.user.ref_status_badan_usaha,
+    nama_badan_usaha: props.user.nama_badan_usaha,
+    titik_koordinat: props.user.titik_koordinat,
+    alamat_badan_usaha: props.user.alamat_badan_usaha,
+    nama_pimpinan: props.user.nama_pimpinan,
+    npwp_badan_usaha: props.user.npwp_badan_usaha,
+    nomor_telepon_badan_usaha: props.user.nomor_telepon_badan_usaha,
+    nomor_whatsapp_usaha: props.user.nomor_whatsapp_usaha,
+    nik_pimpinan: props.user.nik_pimpinan,
+    nomor_akta_pendirian: props.user.nomor_akta_pendirian,
+});
+const updateProfileInformation = () => {
+    if (status_badan_usaha.value) {
+        form.ref_status_badan_usaha = status_badan_usaha.value;
+    }
+    form.post(route('user-profile-information.update'), {
+        errorBag: 'updateProfileInformation',
+        preserveScroll: true,
+        onSuccess: () => console.log('Data updated successfully'),
+    });
+};
+
 </script>
 <template>
     <AppLayout title="Dashboard">
@@ -10,6 +47,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
             </h2>
         </template>
 
+    <form @submit.prevent="updateProfileInformation">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div
@@ -25,34 +63,25 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                             <div class="grid grid-cols-12 gap-5">
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                        >
-                                            Nama Badan Usaha
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="Dinas Perkim"
-                                            id="example-text-input"
-                                        />
+                                            <InputLabel for="nama_badan_usaha" value="Nama Badan Usaha" />
+                                            <TextInput  id="nama_badan_usaha" v-model="form.nama_badan_usaha" type="text" class="mt-1 block w-full" placeholder="Wic***" />
+                                            <InputError :message="form.errors.nama_badan_usaha" class="mt-2" />    
+
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <div class="mb-3">
-                                            <label
-                                                class="block font-medium text-gray-700 mb-2"
-                                                >Status Badan Usaha</label
-                                            >
-                                            <select
-                                                class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0"
-                                            >
-                                                <option>Pusat</option>
-                                                <option>Cabang</option>
-                                            </select>
-                                        </div>
+                                            <InputLabel for="status_badan_usaha" value="Status Badan Usaha" />
+                                            <div v-if="props.user.ref_status_badan_usaha === null">
+                                                <select id="status_badan_usaha" v-model="status_badan_usaha" class=" mt-1 w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0">                                               
+                                                    <option value="Pusat">Pusat </option>
+                                                    <option value="Cabang">Cabang </option>
+                                                </select>
+                                                <InputError :message="form.errors.ref_status_badan_usaha" class="mt-2" />
+                                            </div>
+                                            <div class="mb-1 text-15 text-gray-700" v-else>
+                                            {{ props.user.ref_status_badan_usaha }}
+                                            </div>    
                                     </div>
                                 </div>
                             </div>
@@ -69,76 +98,16 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                             <div class="grid grid-cols-12 gap-5">
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                        >
-                                            Titik Koordinat
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="-7.5374307,111.6302997"
-                                            id="example-text-input"
-                                        />
-                                    </div>
-                                    <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                        >
-                                            Alamat
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="jl***"
-                                            id="example-text-input"
-                                        />
-                                    </div>
-                                    <div class="mb-4">
-                                        <div class="mb-3">
-                                            <label
-                                                class="block font-medium text-gray-700 mb-2"
-                                                >Provinsi</label
-                                            >
-                                            <select
-                                                class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0"
-                                            >
-                                                <option>Jawa Timur</option>
-                                                <option>Jawa Tengah</option>
-                                            </select>
-                                        </div>
+                                            <InputLabel for="titik_koordinat" value="Titik Koordinat" />
+                                            <TextInput  id="titik_koordinat" v-model="form.titik_koordinat" type="text" class="mt-1 block w-full" placeholder="-7.5374307,111.6302997" />
+                                            <InputError :message="form.errors.titik_koordinat" class="mt-2" />  
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <div class="mb-3">
-                                            <label
-                                                class="block font-medium text-gray-700 mb-2"
-                                                >Kota/Kabupaten</label
-                                            >
-                                            <select
-                                                class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0"
-                                            >
-                                                <option>Madiun</option>
-                                                <option>Kab. Madiun</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <div class="mb-3">
-                                            <label
-                                                class="block font-medium text-gray-700 mb-2"
-                                                >Kecamatan</label
-                                            >
-                                            <select
-                                                class="w-full rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0"
-                                            >
-                                                <option>Balerejo</option>
-                                                <option>Mejayan</option>
-                                            </select>
-                                        </div>
+                                            <InputLabel for="alamat_badan_usaha" value="Alamat Badan Usaha" />
+                                            <TextInput  id="alamat_badan_usaha" v-model="form.alamat_badan_usaha" type="text" class="mt-1 block w-full" placeholder="jl.***" />
+                                            <InputError :message="form.errors.alamat_badan_usaha" class="mt-2" />  
                                     </div>
                                 </div>
                             </div>
@@ -155,124 +124,57 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
                             <div class="grid grid-cols-12 gap-5">
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Nama
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="Wicak***"
-                                            id="example-text-input"
-                                        />
+                                            <InputLabel for="nama_pimpinan" value="Nama Pimpinan" />
+                                            <TextInput  id="nama_pimpinan" v-model="form.nama_pimpinan" type="text" class="mt-1 block w-full" placeholder="Wicak***" />
+                                            <InputError :message="form.errors.nama_pimpinan" class="mt-2" />  
                                     </div>
 
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >NPWP Badan Usaha
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="35***"
-                                            id="example-text-input"
-                                        />
-
-                                        <SecondaryButton
-                                            class="mt-2 mr-2"
-                                            type="button"
-                                            @click.prevent="selectNewPhoto"
-                                        >
-                                            Upload Bukti
-                                        </SecondaryButton>
+                                            <InputLabel for="npwp_badan_usaha" value="NPWP Badan Usaha" />
+                                            <TextInput  id="npwp_badan_usaha" v-model="form.npwp_badan_usaha" type="text" class="mt-1 block w-full" placeholder="35***" />
+                                            <InputError :message="form.errors.npwp_badan_usaha" class="mt-2" />  
                                     </div>
 
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Nomor Telepon Badan Usaha
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="08**"
-                                            id="example-text-input"
-                                        />
+                                            <InputLabel for="nomor_telepon_badan_usaha" value="Nomor Telepon Badan Usaha" />
+                                            <TextInput  id="nomor_telepon_badan_usaha" v-model="form.nomor_telepon_badan_usaha" type="text" class="mt-1 block w-full" placeholder="035***" />
+                                            <InputError :message="form.errors.nomor_telepon_badan_usaha" class="mt-2" />  
                                     </div>
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Nomor Whatsapp Badan Usaha
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="08**"
-                                            id="example-text-input"
-                                        />
+                                            <InputLabel for="nomor_whatsapp_usaha" value="Nomor Whatsapp Badan Usaha" />
+                                            <TextInput  id="nomor_whatsapp_usaha" v-model="form.nomor_whatsapp_usaha" type="text" class="mt-1 block w-full" placeholder="085***" />
+                                            <InputError :message="form.errors.nomor_whatsapp_usaha" class="mt-2" /> 
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-6">
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Nomor Induk Kependudukan
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="351***"
-                                            id="example-text-input"
-                                        />
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Email Badan Usaha
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="email"
-                                            placeholder="perkim@madiunkab.go.id"
-                                            id="example-text-input"
-                                        />
+                                            <InputLabel for="nik_pimpinan" value="Nomor Induk Kependudukan Pimpinan" />
+                                            <TextInput  id="nik_pimpinan" v-model="form.nik_pimpinan" type="text" class="mt-1 block w-full" placeholder="351***" />
+                                            <InputError :message="form.errors.nik_pimpinan" class="mt-2" /> 
                                     </div>
                                     <div class="mb-4">
-                                        <label
-                                            for="example-text-input"
-                                            class="block font-medium text-gray-700 mb-2"
-                                            >Nomor Akta Pendirian /Nomor Surat
-                                            Keputusan
-                                        </label>
-                                        <input
-                                            class="w-full rounded border-gray-100 placeholder:text-sm focus:border focus:border-violet-500 focus:ring-0"
-                                            type="text"
-                                            placeholder="123***"
-                                            id="example-text-input"
-                                        />
-
-                                        <SecondaryButton
-                                            class="mt-2 mr-2"
-                                            type="button"
-                                            @click.prevent="selectNewPhoto"
-                                        >
-                                            Upload Bukti
-                                        </SecondaryButton>
+                                            <InputLabel for="nomor_akta_pendirian" value="Nomor Akta Pendirian /Nomor Surat Keputusan" />
+                                            <TextInput  id="nomor_akta_pendirian" v-model="form.nomor_akta_pendirian" type="text" class="mt-1 block w-full" placeholder="351***" />
+                                            <InputError :message="form.errors.nomor_akta_pendirian" class="mt-2" /> 
                                     </div>
                                 </div>
+
                             </div>
+
+                                <div v-if="props.user.ref_status_badan_usaha === null" class="p-4 text-end">
+
+                                    <ActionMessage :on="form.recentlySuccessful" class="mr-3">
+                                        Saved.
+                                    </ActionMessage>
+                                    <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >
+                                        Simpan
+                                    </PrimaryButton>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </AppLayout>
 </template>

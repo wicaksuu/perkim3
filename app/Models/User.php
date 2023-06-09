@@ -23,11 +23,35 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
+
+        'nama_pemohon',
+        'tempat_lahir_pemohon',
+        'tanggal_lahirpemohon',
+        'jabatan_pemohon',
+        'npwp_pemohon',
+        'nik_pemohon',
+        'nomor_telepon_pemohon',
+        'nomor_whatsapp_pemohon',
+        'alamat_pemohon',
+        'ref_bentukBadanUsaha',
+
+
+        'ref_status_badan_usaha',
+        'nama_badan_usaha',
+        'titik_koordinat',
+        'nama_pimpinan',
+        'npwp_badan_usaha',
+        'nomor_telepon_badan_usaha',
+        'nomor_whatsapp_usaha',
+        'nik_pimpinan',
+        'alamat_badan_usaha',
+        'nomor_akta_pendirian',
     ];
 
     /**

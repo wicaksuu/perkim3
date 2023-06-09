@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -21,6 +22,31 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+
+
+            $table->string('nama_pemohon')->nullable();
+            $table->string('tempat_lahir_pemohon')->nullable();
+            $table->string('tanggal_lahirpemohon')->nullable();
+            $table->string('jabatan_pemohon')->nullable();
+            $table->string('npwp_pemohon')->nullable();
+            $table->string('nik_pemohon')->nullable();
+            $table->string('nomor_telepon_pemohon')->nullable();
+            $table->string('nomor_whatsapp_pemohon')->nullable();
+            $table->text('alamat_pemohon')->nullable();
+            $table->string('ref_bentukBadanUsaha')->nullable();
+
+
+            $table->string('ref_status_badan_usaha')->nullable();
+            $table->string('nama_badan_usaha')->nullable();
+            $table->string('titik_koordinat')->nullable();
+            $table->string('nama_pimpinan')->nullable();
+            $table->string('npwp_badan_usaha')->nullable();
+            $table->string('nomor_telepon_badan_usaha')->nullable();
+            $table->string('nomor_whatsapp_usaha')->nullable();
+            $table->string('nik_pimpinan')->nullable();
+            $table->string('nomor_akta_pendirian')->nullable();
+            $table->text('alamat_badan_usaha')->nullable();
+
             $table->timestamps();
         });
     }

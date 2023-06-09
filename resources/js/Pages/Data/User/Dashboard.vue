@@ -1,10 +1,10 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link } from "@inertiajs/vue3";
+const props = defineProps({
+    data: Object,
+});
 </script>
-<style>
-@import 'https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css';
-</style>
 
 <template>
     <AppLayout title="Dashboard">
@@ -38,50 +38,30 @@ import { Link } from "@inertiajs/vue3";
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                <tr>
+                                <tr v-for="item in props.data" :key="item.id">
                                     <td class="px-4 py-3"> 
-                                    1
+                                    {{ item.id }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap">
-                                        <p class=""> Green Garden </p>
-                                        <p class="text-gray-500 text-sm font-semibold tracking-wide"> PT. Sejahtera </p>
+                                        <p class=""> {{ item.nama_perumahan }} </p>
+                                        <p class="text-gray-500 text-sm font-semibold tracking-wide"> {{ item.user.name }} </p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap">
-                                        <p class=""> 1CNSD87312NKJASD </p>
+                                        <p class=""> {{ item.kode_unik }} </p>
                                         <p class="text-gray-500 text-sm font-bold tracking-wide"> Baru </p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap"> 
-                                        Jalan. Slawesi ...
+                                        {{ item.alamat_perumahan }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap"> 
-                                        <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Disahkan </span> 
+                                        <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> 
                                     </td>
                                     <td class="px-6 py-4 text-center"> 
-                                        <a href="#" class="text-purple-800 hover:underline pl-2">Maps</a> 
+                                        
+                                        <a target="_blank" :href="'https://www.google.com/maps/search/?api=1&query=' + item.koordinat_perumahan + ''" class="text-purple-800 hover:underline pl-2">Maps</a>
+
                                         <a href="#" class="text-purple-800 hover:underline pl-2">Riwayat</a> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3"> 
-                                    2
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-wrap">
-                                        <p class=""> Green Garden </p>
-                                        <p class="text-gray-500 text-sm font-semibold tracking-wide"> PT. Sejahtera </p>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-wrap">
-                                        <p class=""> 1CNSD87312NKJASD </p>
-                                        <p class="text-gray-500 text-sm font-bold tracking-wide"> Baru </p>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-wrap"> 
-                                        Jalan. Slawesi ...
-                                   </td>
-                                    <td class="px-6 py-4 whitespace-wrap"> 
-                                        <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Diterbitkan </span> 
-                                    </td>
-                                    <td class="px-6 py-4 text-center"> 
-                                        <a href="https://maps.google.com/maps?ll=-7.6196,111.4742&z=15&t=m&hl=en-US&gl=US&mapclient=embed&q=7%C2%B037%2710.6%22S%20111%C2%B028%2727.1%22E%20-7.619600%2C%20111.474200@-7.619599999999999,111.4742" class="text-purple-800 hover:underline pl-2">Maps</a> 
-                                        <a href="#" class="text-purple-800 hover:underline pl-2">Dokumen Penerbitan</a> 
+                                        <a target="_blank" href="http://localhost:8000/validate/WsRHNPDrNeBirIDPXgHV" class="text-purple-800 hover:underline pl-2">Dokumen</a> 
                                     </td>
                                 </tr>
                             </tbody>

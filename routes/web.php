@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Validator;
+use App\Models\FormData;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -106,10 +107,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         switch (Auth::user()->role) {
             case 'User':
-                return Inertia::render('Data/User/Dashboard');
+                $data = FormData::with('user')->where('user_id', Auth::user()->id)->get();
+                return Inertia::render('Data/User/Dashboard', ['data' => $data]);
                 break;
             case 'Dinas':
-                return Inertia::render('Data/Dinas/Dashboard');
+                $data = FormData::with('user')->get();
+                return Inertia::render('Data/Dinas/Dashboard', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
                 return Inertia::render('Data/KepalaDinas/Dashboard');
@@ -203,7 +206,7 @@ Route::middleware([
     Route::get('/data-pemohon', function () {
         switch (Auth::user()->role) {
             case 'User':
-                return Inertia::render('Data/User/DataPemohon');
+                return Inertia::render('Data/User/DataPemohon', ['user' => Auth::user()]);
                 break;
             default:
                 return redirect('/');
@@ -214,7 +217,7 @@ Route::middleware([
     Route::get('/data-perusahaan', function () {
         switch (Auth::user()->role) {
             case 'User':
-                return Inertia::render('Data/User/DataPerusahaan');
+                return Inertia::render('Data/User/DataPerusahaan', ['user' => Auth::user()]);
                 break;
             default:
                 return redirect('/');

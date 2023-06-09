@@ -1,6 +1,9 @@
 <script setup>
 import AppLayoutDinas from "@/Layouts/AppLayoutDinas.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+const props = defineProps({
+    data: Object,
+});
 </script>
 
 
@@ -57,35 +60,34 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                         </thead>
                                         <tbody>
                                             
-                                            <tr class="bg-white border-b border-gray-50 ">
+                                            <tr class="bg-white border-b border-gray-50 " v-for="item in props.data" :key="item.id">
                                                 <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap ">
-                                                    1
+                                                    {{ item.id }}
                                                 </th>
                                                 <td class="px-2 py-2 ">
                                                     PT. Nusa
                                                 </td>
                                                 <td class="px-2 py-2 ">
-                                                    Perumahan Hijau
+                                                    {{ item.nama_perumahan }}
                                                 </td>
                                                 <td class="px-2 py-2 ">                                                    
-                                                    JSADN87SAD8Y6897
+                                                    
                                                 </td>
                                                 <td class="px-2 py-2 ">                                                    
-                                                    DAYU6GJASJHD876N
+                                                    {{ item.kode_unik }}
                                                 </td>
                                                 <th scope="col" class="px-2 py-2">
-                                                    Perubahan
+                                                    Baru
                                                 </th>
                                                 <td class="px-2 py-2 ">
-                                                    Jl. Borobudur Madiun ....
+                                                    {{ item.alamat_perumahan }}
                                                 </td>
                                                 <td class="px-2 py-2 ">
-                                                    <PrimaryButton>Maps</PrimaryButton>
+                                                          <a target="_blank" :href="'https://www.google.com/maps/search/?api=1&query=' + item.koordinat_perumahan + ''" class="text-purple-800 hover:underline pl-2">Maps</a>
                                                 </td>
                                                 <td class="px-2 py-2 ">
                                                     <div class="text-yellow-700">
-                                                         Diproses
-
+                                                         {{ item.status }}
                                                     </div>
                                                 </td>
                                                 <td class="px-2 py-2 ">
@@ -95,43 +97,6 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
                                                 </td>
                                             </tr>
                                             
-                                            <tr class="bg-white border-b border-gray-50 ">
-                                                <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap ">
-                                                    2
-                                                </th>
-                                                <td class="px-2 py-2 ">
-                                                    PT. Cipta Karya
-                                                </td>
-                                                <td class="px-2 py-2 ">
-                                                    Perumahan Hijau
-                                                </td>
-                                                <td class="px-2 py-2 ">                                                    
-                                                    -
-                                                </td>
-                                                <td class="px-2 py-2 ">                                                    
-                                                    KJHDKJHADS874219
-                                                </td>
-                                                <th scope="col" class="px-2 py-2">
-                                                    Baru
-                                                </th>
-                                                <td class="px-2 py-2 ">
-                                                    Jl. Borobudur Madiun ....
-                                                </td>
-                                                <td class="px-2 py-2 ">
-                                                    <PrimaryButton>Maps</PrimaryButton>
-                                                </td>
-                                                <td class="px-2 py-2 ">
-                                                    <div class="text-blue-700">
-                                                         Revisi
-
-                                                    </div>
-                                                </td>
-                                                <td class="px-2 py-2 ">
-                                                    <div class="p-1">
-                                                        <PrimaryButton>Buka</PrimaryButton>
-                                                    </div>
-                                                </td>
-                                            </tr>
                                             
                                         </tbody>
                                     </table>

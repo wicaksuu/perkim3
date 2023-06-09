@@ -26,6 +26,7 @@ defineProps({
             </div>
             <hr>
             <div class="text-sm text-center text-zinc-600">No. Penerbitan {{ Kode }}</div>
+            <div class="text-sm text-center text-zinc-600">Griya Santa (Jalan Sulawesi no 14)</div>
 
             <div class="bg-transparent p-4 overflow-x-auto">
                 <table class="table-auto bg-transparent">
