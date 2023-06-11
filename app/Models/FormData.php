@@ -14,6 +14,9 @@ class FormData extends Model
         'status',
         'tanggal_pengesahasan',
         'tanggal_penerbitan',
+        'tanggal_penolakan',
+        'tanggal_verifikasi',
+
         'komentar',
         'user_id',
         'kode_unik',
@@ -63,5 +66,9 @@ class FormData extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function psu()
+    {
+        return $this->hasMany(PSUs::class, 'kode_unik', 'kode_unik');
     }
 }

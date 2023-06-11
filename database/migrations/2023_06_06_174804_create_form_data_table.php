@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('status')->default('Diproses');
             $table->string('tanggal_pengesahasan')->nullable();
             $table->string('tanggal_penerbitan')->nullable();
+            $table->string('tanggal_penolakan')->nullable();
+            $table->string('tanggal_verifikasi')->nullable();
             $table->text('komentar')->nullable();
 
             $table->unsignedBigInteger('user_id');

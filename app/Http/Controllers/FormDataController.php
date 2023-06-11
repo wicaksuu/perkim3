@@ -160,4 +160,16 @@ class FormDataController extends Controller
         $formData->save();
     }
 
+    public function viewData($kodeunik)
+    {
+
+        if (Auth::user()->role == 'Dinas') {
+
+            $data = FormData::where('kode_unik', $kodeunik)->with('psu', 'user')->first();
+            return Inertia::render('Data/Dinas/Buka/View', ['data' => $data]);
+        } else {
+            return back();
+        }
+    }
+
 }

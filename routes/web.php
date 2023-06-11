@@ -50,13 +50,16 @@ Route::middleware([
     Route::get('/arsip', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                return Inertia::render('Data/Dinas/DaftarArsip');
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                return Inertia::render('Data/Dinas/DaftarArsip', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                return Inertia::render('Data/KepalaDinas/DaftarArsip');
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                return Inertia::render('Data/KepalaDinas/DaftarArsip', ['data' => $data]);
                 break;
             case 'DPMPTSP':
-                return Inertia::render('Data/Dpmptsp/DaftarArsip');
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                return Inertia::render('Data/Dpmptsp/DaftarArsip', ['data' => $data]);
                 break;
             default:
                 return redirect('/');
@@ -68,10 +71,12 @@ Route::middleware([
     Route::get('/menunggu-dpmptsp', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                return Inertia::render('Data/Dinas/DaftarAntrianDpmptsp');
+                $data = FormData::with('user')->where('status', 'Disahkan')->get();
+                return Inertia::render('Data/Dinas/DaftarAntrianDpmptsp', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                return Inertia::render('Data/KepalaDinas/DaftarAntrianDpmptsp');
+                $data = FormData::with('user')->where('status', 'Disahkan')->get();
+                return Inertia::render('Data/KepalaDinas/DaftarAntrianDpmptsp', ['data' => $data]);
                 break;
             default:
                 return redirect('/');
@@ -82,10 +87,12 @@ Route::middleware([
     Route::get('/daftar-ditolak', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                return Inertia::render('Data/Dinas/DaftarDitolak');
+                $data = FormData::with('user')->where('status', 'Ditolak')->get();
+                return Inertia::render('Data/Dinas/DaftarDitolak', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                return Inertia::render('Data/KepalaDinas/DaftarDitolak');
+                $data = FormData::with('user')->where('status', 'Ditolak')->get();
+                return Inertia::render('Data/KepalaDinas/DaftarDitolak', ['data' => $data]);
                 break;
             default:
                 return redirect('/');
@@ -96,7 +103,8 @@ Route::middleware([
     Route::get('/daftar-terverifikasi', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                return Inertia::render('Data/Dinas/DaftarTerverifikasi');
+                $data = FormData::with('user')->where('status', 'Terverifikasi')->get();
+                return Inertia::render('Data/Dinas/DaftarTerverifikasi', ['data' => $data]);
                 break;
             default:
                 return redirect('/');
@@ -112,14 +120,16 @@ Route::middleware([
                 return Inertia::render('Data/User/Dashboard', ['data' => $data]);
                 break;
             case 'Dinas':
-                $data = FormData::with('user')->get();
+                $data = FormData::with('user')->where('status', 'Diproses')->get();
                 return Inertia::render('Data/Dinas/Dashboard', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                return Inertia::render('Data/KepalaDinas/Dashboard');
+                $data = FormData::with('user')->where('status', 'Terverifikasi')->get();
+                return Inertia::render('Data/KepalaDinas/Dashboard', ['data' => $data]);
                 break;
             case 'DPMPTSP':
-                return Inertia::render('Data/Dpmptsp/Dashboard');
+                $data = FormData::with('user')->where('status', 'Disahkan')->get();
+                return Inertia::render('Data/Dpmptsp/Dashboard', ['data' => $data]);
                 break;
             default:
                 return redirect('/');
@@ -239,5 +249,8 @@ Route::middleware([
                 break;
         }
     })->name('psu-lain-lain');
+
+
+    Route::get('/data-view/{kodeunik}', [FormDataController::class, 'viewData']);
 
 });
