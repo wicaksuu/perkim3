@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FormData;
+use App\Models\PSUs;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -66,10 +67,10 @@ class FormDataController extends Controller
         foreach ($filePaths as $fileKey => $filePath) {
             $formData->$fileKey = $filePath;
         }
-
         $formData->save();
+
         if ($data['ref_mbrOrNon'] == 'MBR') {
-            return redirect(route('pengajuan-mbr'));
+            return route('pengajuan-mbr');
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit Kurang dari 100') {
             return redirect(route('pengajuan-non-mbr-1'));
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit 100 sd 3000') {
@@ -126,7 +127,7 @@ class FormDataController extends Controller
                 }
             }
 
-            $data = FormData::where('ref_mbrOrNon', 'MBR')->first();
+            $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->first();
             foreach ($data as $key => $value) {
                 $data->$key = $value;
             }
@@ -141,4 +142,22 @@ class FormDataController extends Controller
         }
         return redirect(route('dashboard'));
     }
+
+    public function addPSU(Request $request)
+    {
+        $data = $request->all();
+        Validator::make($data, [
+            'psu' => ['required', 'string', 'max:255'],
+            'luas_lahan' => ['required', 'string', 'max:255'],
+            'kode_unik' => ['required', 'string', 'max:255'],
+        ])->validateWithBag('submit');
+
+        $formData = new PSUs();
+        $formData->user_id = auth()->user()->id;
+        $formData->kode_unik = $data['kode_unik'];
+        $formData->psu = $data['psu'];
+        $formData->luas = $data['luas_lahan'];
+        $formData->save();
+    }
+
 }

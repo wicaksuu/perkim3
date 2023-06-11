@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Validator;
 use App\Models\FormData;
+use App\Models\PSUs;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -140,7 +141,9 @@ Route::middleware([
     Route::get('/pengajuan-mbr', function () {
         switch (Auth::user()->role) {
             case 'User':
-                return Inertia::render('Data/User/Mbr');
+                $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->first();
+                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->get();
+                return Inertia::render('Data/User/Mbr', ['KodeUnik' => $data->kode_unik, 'psu' => $psu]);
                 break;
             default:
                 return redirect('/');
@@ -223,6 +226,18 @@ Route::middleware([
                 return redirect('/');
                 break;
         }
-    })->name('data-perusahaan');    
+    })->name('data-perusahaan');
+
+
+    Route::post('/psu-lain-lain', function () {
+        switch (Auth::user()->role) {
+            case 'User':
+                return app()->call('App\Http\Controllers\FormDataController@addPSU');
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+    })->name('psu-lain-lain');
 
 });
