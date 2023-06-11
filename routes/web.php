@@ -47,7 +47,7 @@ Route::middleware([
 ])->group(function () {
 
 
-    Route::get('/arsip', function () {
+    Route::get('/dokumen-tersimpan', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
                 $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
