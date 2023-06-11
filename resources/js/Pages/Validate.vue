@@ -27,7 +27,7 @@ defineProps({
             </div>
             <hr>
             <div class="text-sm text-center text-zinc-600">No. Penerbitan {{ Kode }}</div>
-            <div class="text-sm text-center text-zinc-600">{{ Data.nama_perumahan }} ({{ Data.alamat }})</div>
+            <div class="text-sm text-center text-zinc-600">{{ Data.nama_perumahan }} ({{ Data.alamat_perumahan }})</div>
 
             <div class="bg-transparent p-4 overflow-x-auto">
                 <table class="table-auto bg-transparent">
@@ -52,7 +52,7 @@ defineProps({
                     <tr>
                         <td class="text-sm whitespace-wrap">Diterbitkan</td>
                         <td class="text-sm pl-5 whitespace-wrap"> : </td>
-                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_diterbitkan }}</td>
+                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_penerbitan }}</td>
                     </tr>
                     <tr>
                         <td class="text-sm whitespace-wrap">Oleh</td>
