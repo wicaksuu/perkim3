@@ -211,16 +211,16 @@ class FormDataController extends Controller
             $width          = 25;
             $height         = 25;
             $code           = $kodeunik;
-            $file_name      = storage_path('qr/' . $code . '.jpg');
+            $file_name      =  public_path('storage/' . 'qr/' . $code . '.jpg');
             $qrImageData    = $qrCode->render("https://sipedalrum.madiunkab.go.id/validate/$code");
-
             list($type, $qrImageData) = explode(';', $qrImageData);
             list(, $qrImageData) = explode(',', $qrImageData);
             $image_data = base64_decode($qrImageData);
             file_put_contents($file_name, $image_data);
+            
             $pdf        = new FPDI();
 
-            $pageCount  = $pdf->setSourceFile(storage_path($berkas->ref_gambar_rencana_pdf));
+            $pageCount  = $pdf->setSourceFile(public_path('storage/' . $berkas->ref_gambar_rencana_pdf));
             $tplIdx     = $pdf->importPage(1);
             $size       = $pdf->getTemplateSize($tplIdx);
 
@@ -231,7 +231,7 @@ class FormDataController extends Controller
             $pdf->SetFont('Arial', 'I', 11);
             $pdf->Cell(0, 0, 'Dokumen ini telah ditandatangani secara elektronik oleh Kepala Dinas Perumahan dan Kawasan Permukiman Kabupaten Madiun', 0, 0, 'C');
             $pdf->Image($file_name, $size['width'] - $x, $size['height'] - $y, $width, $height);
-            $pdf->Output(storage_path($code . '.pdf'), 'F');
+            $pdf->Output(public_path('storage/' . $code . '.pdf'), 'F');
             unlink($file_name);
             FormData::where('kode_unik', $kodeunik)->update([
                 'status' => 'Diterbitkan',
