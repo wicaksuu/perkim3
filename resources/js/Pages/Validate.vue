@@ -35,7 +35,7 @@ defineProps({
                     <tr>
                         <td class="text-sm whitespace-wrap">Pengesahan</td>
                         <td class="text-sm pl-5 whitespace-wrap"> : </td>
-                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_pengesahan }}</td>
+                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_pengesahasan }}</td>
                     </tr>
                     <tr>
                         <td class="text-sm whitespace-wrap">Oleh</td>
