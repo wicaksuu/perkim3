@@ -70,7 +70,7 @@ class FormDataController extends Controller
         $formData->save();
 
         if ($data['ref_mbrOrNon'] == 'MBR') {
-            return route('pengajuan-mbr');
+            return redirect(route('pengajuan-mbr'));
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit Kurang dari 100') {
             return redirect(route('pengajuan-non-mbr-1'));
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit 100 sd 3000') {

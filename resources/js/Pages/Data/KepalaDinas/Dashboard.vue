@@ -1,6 +1,7 @@
 <script setup>
 import AppLayoutKepalaDinas from "@/Layouts/AppLayoutKepalaDinas.vue";
 import "@/assets/libs/dropzone/min/dropzone.min.js";
+import { Link } from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 const props = defineProps({
     data: Object,
@@ -56,7 +57,7 @@ const props = defineProps({
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-wrap"> 
-                                                <PrimaryButton >Tandatangani</PrimaryButton>
+                                                <Link :href="'ttd/' + item.kode_unik" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">Tandatangani</Link>
                                             </td>
                                         </tr>
                                             
