@@ -24,7 +24,7 @@ class FormDataController extends Controller
     public function submit(Request $request)
     {
         $data = $request->all();
-        $kode_unik = uniqid();
+        $kode_unik = bin2hex(random_bytes(20));
         Validator::make($data, [
             'nama_perumahan' => ['required', 'string', 'max:255'],
             'koordinat_perumahan' => ['required', 'string', 'max:255'],
