@@ -10,6 +10,14 @@ use App\Models\PSUs;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
+use setasign\Fpdi\Fpdi;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+
+require_once(app_path('paket/fpdf/fpdf.php'));
+require_once(app_path('paket/fdi/src/autoload.php'));
+
+
 class FormDataController extends Controller
 {
 
@@ -186,7 +194,45 @@ class FormDataController extends Controller
     }
     public function terbit($kodeunik)
     {
+
         if (Auth::user()->role == 'DPMPTSP') {
+
+            $berkas = FormData::where('kode_unik',  $kodeunik)->first();
+            $options = new QROptions([
+                'version' => 5,
+                'outputType' => QRCode::OUTPUT_IMAGE_JPG,
+                'imageBase64' => true,
+            ]);
+            $qrCode         = new QRCode($options);
+
+
+            $x              = 52;
+            $y              = 55;
+            $width          = 25;
+            $height         = 25;
+            $code           = $kodeunik;
+            $file_name      = $code . '.jpg';
+            $qrImageData    = $qrCode->render("https://sipedalrum.madiunkab.go.id/validate/$code");
+
+            list($type, $qrImageData) = explode(';', $qrImageData);
+            list(, $qrImageData) = explode(',', $qrImageData);
+            $image_data = base64_decode($qrImageData);
+            file_put_contents($file_name, $image_data);
+            $pdf        = new FPDI();
+
+            $pageCount  = $pdf->setSourceFile(storage_path($berkas->ref_gambar_rencana_pdf));
+            $tplIdx     = $pdf->importPage(1);
+            $size       = $pdf->getTemplateSize($tplIdx);
+
+            $pdf->AddPage($size['orientation'], array($size['width'], $size['height']));
+            $pdf->useTemplate($tplIdx);
+            $pdf->SetTextColor(0, 0, 255);
+            $pdf->SetXY(0, $size['height'] - 22);
+            $pdf->SetFont('Arial', 'I', 11);
+            $pdf->Cell(0, 0, 'Dokumen ini telah ditandatangani secara elektronik oleh Kepala Dinas Perumahan dan Kawasan Permukiman Kabupaten Madiun', 0, 0, 'C');
+            $pdf->Image($file_name, $size['width'] - $x, $size['height'] - $y, $width, $height);
+            $pdf->Output(storage_path($code . '.pdf'), 'F');
+            unlink($file_name);
             FormData::where('kode_unik', $kodeunik)->update([
                 'status' => 'Diterbitkan',
                 'tanggal_penerbitan' => date("d-m-Y H:i:s"),

@@ -1,6 +1,6 @@
 <script setup>
 import AppLayoutDpmptsp from "@/Layouts/AppLayoutDpmptsp.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { Link } from "@inertiajs/vue3";
 const props = defineProps({
     data: Object,
 });
@@ -57,7 +57,10 @@ const props = defineProps({
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-wrap"> 
-                                                <PrimaryButton >Terbitkan</PrimaryButton>
+                                                
+                                            <td class="px-6 py-4 whitespace-wrap"> 
+                                                <Link :href="'terbit/' + item.kode_unik" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">Terbitkan</Link>
+                                            </td>
                                             </td>
                                         </tr>
                                             
