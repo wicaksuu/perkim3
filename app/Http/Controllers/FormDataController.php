@@ -211,7 +211,7 @@ class FormDataController extends Controller
             $width          = 25;
             $height         = 25;
             $code           = $kodeunik;
-            $file_name      = $code . '.jpg';
+            $file_name      = storage_path('qr/' . $code . '.jpg');
             $qrImageData    = $qrCode->render("https://sipedalrum.madiunkab.go.id/validate/$code");
 
             list($type, $qrImageData) = explode(';', $qrImageData);
