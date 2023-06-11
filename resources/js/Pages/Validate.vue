@@ -40,7 +40,7 @@ defineProps({
                     <tr>
                         <td class="text-sm whitespace-wrap">Oleh</td>
                         <td class="text-sm pl-5 whitespace-wrap"> : </td>
-                        <td class="text-sm whitespace-wrap">Kepala Dinas Perumahan dana Kawasan Pemukiman Kabupaten Madiun</td>
+                        <td class="text-sm whitespace-wrap">Kepala Dinas Perumahan dan Kawasan Pemukiman Kabupaten Madiun</td>
                     </tr>
                     </tbody>
                 </table>
