@@ -1,7 +1,5 @@
 <script setup>
 import AppLayoutDinas from "@/Layouts/AppLayoutDinas.vue";
-import "@/assets/libs/dropzone/min/dropzone.min.js";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 const props = defineProps({
     data: Object,
 });
@@ -58,7 +56,7 @@ const props = defineProps({
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-wrap"> 
-                                                <PrimaryButton >Buka</PrimaryButton>
+                                            <a target="_blank" :href="'validate/' + item.kode_unik" class="text-purple-800 hover:underline pl-2">Dokumen</a> 
                                             </td>
                                         </tr>
                                             

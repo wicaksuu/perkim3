@@ -1,7 +1,5 @@
 <script setup>
 import AppLayoutDpmptsp from "@/Layouts/AppLayoutDpmptsp.vue";
-import "@/assets/libs/dropzone/min/dropzone.min.js";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 const props = defineProps({
     data: Object,
 });
