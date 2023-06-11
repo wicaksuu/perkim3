@@ -56,17 +56,12 @@ const props = defineProps({
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-wrap"> 
-                                            <a target="_blank" :href="'validate/' + item.kode_unik" class="text-purple-800 hover:underline pl-2">Dokumen</a> 
+                                            <a target="_blank" :href="'validate/' + item.kode_unik" class="text-purple-800 hover:underline pl-2">Buka</a> 
                                             </td>
                                         </tr>
-                                            
-                                            
                                         </tbody>
                                     </table>
-
                     </div>
-                
-
                 </div>
             </div>
         </div>
