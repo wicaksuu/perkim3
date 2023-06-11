@@ -172,4 +172,17 @@ class FormDataController extends Controller
         }
     }
 
+    public function ttd($kodeunik)
+    {
+        if (Auth::user()->role == 'Kepala Dinas') {
+            FormData::where('kode_unik', $kodeunik)->update([
+                'status' => 'Disahkan',
+                'tanggal_pengesahasan' => date("d-m-Y H:i:s"),
+            ]);
+            return back();
+        } else {
+            return back();
+        }
+    }
+
 }
