@@ -61,7 +61,7 @@ const props = defineProps({
                                         <a target="_blank" :href="'https://www.google.com/maps/search/?api=1&query=' + item.koordinat_perumahan + ''" class="text-purple-800 hover:underline pl-2">Maps</a>
 
                                         <a href="#" class="text-purple-800 hover:underline pl-2">Riwayat</a> 
-                                        <a target="_blank" href="http://localhost:8000/validate/WsRHNPDrNeBirIDPXgHV" class="text-purple-800 hover:underline pl-2">Dokumen</a> 
+                                        <a target="_blank" :href="'validate/' + item.kode_unik" class="text-purple-800 hover:underline pl-2">Dokumen</a> 
                                     </td>
                                 </tr>
                             </tbody>

@@ -253,5 +253,6 @@ Route::middleware([
 
     Route::get('/data-view/{kodeunik}', [FormDataController::class, 'viewData']);
     Route::get('/ttd/{kodeunik}', [FormDataController::class, 'ttd']);
+    Route::get('/terbit/{kodeunik}', [FormDataController::class, 'terbit']);
 
 });

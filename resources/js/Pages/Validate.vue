@@ -5,6 +5,7 @@ import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 defineProps({
     Arsip: String,
     Kode:String,
+    Data:Object,
 });
 </script>
 
@@ -26,7 +27,7 @@ defineProps({
             </div>
             <hr>
             <div class="text-sm text-center text-zinc-600">No. Penerbitan {{ Kode }}</div>
-            <div class="text-sm text-center text-zinc-600">Griya Santa (Jalan Sulawesi no 14)</div>
+            <div class="text-sm text-center text-zinc-600">{{ Data.nama_perumahan }} ({{ Data.alamat }})</div>
 
             <div class="bg-transparent p-4 overflow-x-auto">
                 <table class="table-auto bg-transparent">
@@ -34,7 +35,7 @@ defineProps({
                     <tr>
                         <td class="text-sm whitespace-wrap">Pengesahan</td>
                         <td class="text-sm pl-5 whitespace-wrap"> : </td>
-                        <td class="text-sm whitespace-wrap">10:30:22 09/06/2023</td>
+                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_pengesahan }}</td>
                     </tr>
                     <tr>
                         <td class="text-sm whitespace-wrap">Oleh</td>
@@ -51,7 +52,7 @@ defineProps({
                     <tr>
                         <td class="text-sm whitespace-wrap">Diterbitkan</td>
                         <td class="text-sm pl-5 whitespace-wrap"> : </td>
-                        <td class="text-sm whitespace-wrap">10:45:10 09/06/2023</td>
+                        <td class="text-sm whitespace-wrap">{{ Data.tanggal_diterbitkan }}</td>
                     </tr>
                     <tr>
                         <td class="text-sm whitespace-wrap">Oleh</td>

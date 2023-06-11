@@ -184,5 +184,17 @@ class FormDataController extends Controller
             return back();
         }
     }
+    public function terbit($kodeunik)
+    {
+        if (Auth::user()->role == 'DPMPTSP') {
+            FormData::where('kode_unik', $kodeunik)->update([
+                'status' => 'Diterbitkan',
+                'tanggal_penerbitan' => date("d-m-Y H:i:s"),
+            ]);
+            return back();
+        } else {
+            return back();
+        }
+    }
 
 }
