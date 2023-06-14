@@ -65,6 +65,7 @@
 <li><a target="_blank" href="https://sipedalrum.madiunkab.go.id/panduan.pdf">Panduan</a></li>
 <li><a target="_blank" href="https://sipedalrum.madiunkab.go.id/syarat.pdf">Persyaratan Dokumen</a></li>
 <li><a href="{{ route('about') }}">Tentang</a></li>
+<li><a href="https://sipedalrum.madiunkab.go.id/tutorial-sipedalrum.mp4">Vidio Tutorial</a></li>
                         </ul>
                     </div>
                 </div>
