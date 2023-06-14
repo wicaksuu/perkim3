@@ -61,7 +61,7 @@
 <li><a data-scroll class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a> </li>
 <li><a href="{{ route('login') }}">Masuk</a></li>
 <li><a href="{{ route('register') }}">Daftar</a></li>
-<li><a href="#">Regulasi</a></li>
+<li><a href="https://sipedalrum.madiunkab.go.id/sk_bupati_simpedal.pdf">Regulasi</a></li>
 <li><a target="_blank" href="https://sipedalrum.madiunkab.go.id/panduan.pdf">Panduan</a></li>
 <li><a target="_blank" href="https://sipedalrum.madiunkab.go.id/syarat.pdf">Persyaratan Dokumen</a></li>
 <li><a href="{{ route('about') }}">Tentang</a></li>
