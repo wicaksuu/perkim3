@@ -62,6 +62,7 @@ class FormDataController extends Controller
         // Simpan data ke database
         $formData = new FormData();
         $formData->nama_perumahan = $data['nama_perumahan'];
+        $formData->status = "Isi Data Selanjutanya";
         $formData->kode_unik = $kode_unik;
         $formData->koordinat_perumahan = $data['koordinat_perumahan'];
         $formData->nomor_induk_berusaha = $data['nomor_induk_berusaha'];
@@ -142,7 +143,7 @@ class FormDataController extends Controller
             foreach ($filePaths as $fileKey => $filePath) {
                 $data->$fileKey = $filePath;
             }
-
+            $data->status = "Diproses";
             $data->save();
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit Kurang dari 100') {
         } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit 100 sd 3000') {
