@@ -2,11 +2,21 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import AppLayout from "@/Layouts/AppLayout.vue";
+import DialogModal from '@/Components/DialogModal.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
+import DangerButton from '@/Components/DangerButton.vue';
 import Checkbox from '@/Components/Checkbox.vue';
+
+const props = defineProps({
+    KodeUnik: String,
+    psu: Object,
+});
+
+const modalNewpsu = ref(false);
 
 const sertifikat_tanah = ref(null);
 const akta_jual_beli = ref(null);
@@ -14,6 +24,33 @@ const bukti_pelunasan_sppt_pbb = ref(null);
 const keberadaan_perumahan = ref(null);
 const gambar_rencana_zip = ref(null);
 const gambar_rencana_pdf = ref(null);
+
+
+const formPSU = useForm({
+    psu:'',
+    luas_lahan:'',
+    kode_unik: props.KodeUnik,
+});
+
+const openNewPsu = () => {
+    modalNewpsu.value = true;
+    setTimeout(() => psuInput.value.focus(), 250);
+};
+const closeModal = () => {
+    modalNewpsu.value = false;
+    formPSU.reset();
+};
+const tambahPSU = () => {
+    formPSU.post(route('psu-lain-lain'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            closeModal();
+        },
+        onError: () => psuInput.value.focus(),
+        onFinish: () => formPSU.reset(),
+    });
+};
+
 
 const form = useForm({
     luas_lahan: '',
@@ -311,11 +348,40 @@ const clearPhotoFileInput = () => {
                                             <TextInput id="makam" ref="currentPasswordInput" v-model="form.makam" type="number" class="mt-1 block w-full" autocomplete="current-password" placeholder="100" />
                                             <InputError :message="form.errors.makam" class="mt-2" />                                    
                                         </div>
+                                     
+                                        
+
                                         <div class="mb-4">
-                                            <InputLabel for="makam" value="Lain - lain PSU bila ada" class="pb-3"/>
-                                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >
+                                            <InputLabel value="Lain - lain PSU bila ada" class="pb-3"/>
+                                            <DangerButton @click="openNewPsu" >
                                                 Tambah Psu
-                                            </PrimaryButton>                                                                             
+                                            </DangerButton>                                                                             
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="overflow-x-auto">                
+                                                <table class='min-w-full whitespace-wrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+                                                    <thead class="bg-gray-900">
+                                                        <tr class="text-white">
+                                                            <th class="font-semibold text-sm uppercase px-4 py-3 tracking-wider"> No. </th>
+                                                            <th class="font-semibold text-sm uppercase px-4 py-3 tracking-wider"> PSU Lain </th>
+                                                            <th class="font-semibold text-sm uppercase px-4 py-3 tracking-wider"> Luas </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                        <tr v-for="item in props.psu" :key="item.id">
+                                                            <td class="px-4 py-3"> 
+                                                            {{ item.id }}
+                                                            </td>
+                                                            <td class="px-4 py-3"> 
+                                                            {{ item.psu }}
+                                                            </td>
+                                                            <td class="px-4 py-3"> 
+                                                            {{ item.luas }}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -324,6 +390,42 @@ const clearPhotoFileInput = () => {
                     </div>
                 </div>
             </div>
+
+                        <!-- modal tambah psu -->
+            <DialogModal :show="modalNewpsu" @close="closeModal">
+                <template #title>
+                    Tambah PSU Lain - Lain
+                </template>
+
+                <template #content>
+                    <div class="mt-4">
+                        <InputLabel for="psu" value="PSU Lain-Lain" />
+                        <TextInput id="psu" ref="psuInput" v-model="formPSU.psu" type="text" class="mt-1 block w-full" placeholder="PSU Lain Lain" />
+                        <InputError :message="formPSU.errors.psu" class="mt-2" />  
+                    </div> 
+                    <div class="mt-4">
+                        <InputLabel for="luas_lahan" value="PSU Lain-Lain" />
+                        <TextInput id="luas_lahan" ref="luas_lahanInput" v-model="formPSU.luas_lahan" type="number" class="mt-1 block w-full" placeholder="Luas PSU (m2)" />
+                        <InputError :message="formPSU.errors.luas_lahan" class="mt-2" />  
+                    </div>
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Cancel
+                    </SecondaryButton>
+
+                    <DangerButton
+                        class="ml-3"
+                        :class="{ 'opacity-25': formPSU.processing }"
+                        :disabled="formPSU.processing"
+                        @click="tambahPSU"
+                    >
+                        Tambah PSU
+                    </DangerButton>
+                </template>
+            </DialogModal>
+            <!-- end modal tambah psu -->
 
             <div class="pb-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

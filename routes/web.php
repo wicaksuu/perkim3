@@ -164,7 +164,9 @@ Route::middleware([
     Route::get('/pengajuan-non-mbr-1', function () {
         switch (Auth::user()->role) {
             case 'User':
-                return Inertia::render('Data/User/NonMbr1');
+                $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->first();
+                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->get();
+                return Inertia::render('Data/User/NonMbr1', ['KodeUnik' => $data->kode_unik, 'psu' => $psu]);
                 break;
             default:
                 return redirect('/');
