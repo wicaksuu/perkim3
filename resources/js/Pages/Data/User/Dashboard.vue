@@ -58,18 +58,18 @@ const props = defineProps({
                                     
                                     </td>
                                     <td class="px-6 py-4 text-center"> 
-                                        <div v-if="item.status=='Isi Data Selanjutanya'">
+                                        <div v-if="item.status=='Lengkapi'">
                                             <div v-if="item.ref_mbrOrNon=='MBR'">
-                                                <Link rel="stylesheet" :href="route('pengajuan-mbr')">Lengkapi Data</Link>
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-mbr')">Lengkapi</Link>
                                             </div>
                                             <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Kurang dari 100'">
-                                                <Link rel="stylesheet" :href="route('pengajuan-non-mbr-1')">Lengkapi Data</Link>
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-1')">Lengkapi</Link>
                                             </div>
                                             <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit 100 sd 3000'">
-                                                <Link rel="stylesheet" :href="route('pengajuan-non-mbr-2')">Lengkapi Data</Link>
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-2')">Lengkapi</Link>
                                             </div>
                                             <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Lebih dari 3000'">
-                                                <Link rel="stylesheet" :href="route('pengajuan-non-mbr-3')">Lengkapi Data</Link>
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-3')">Lengkapi</Link>
                                             </div>
                                         </div>
                                         <a target="_blank" :href="'https://www.google.com/maps/search/?api=1&query=' + item.koordinat_perumahan + ''" class="text-purple-800 hover:underline pl-2">Maps</a>
