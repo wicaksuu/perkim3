@@ -145,8 +145,8 @@ class FormDataController extends Controller
             }
             $data->status = "Diproses";
             $data->save();
-        } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit Kurang dari 100') {
-        } elseif ($data['ref_mbrOrNon'] == 'NON MBR Jumlah Unit 100 sd 3000') {
+        } elseif ($data['kode_unik'] == 'NON MBR Jumlah Unit Kurang dari 100') {
+        } elseif ($data['kode_unik'] == 'NON MBR Jumlah Unit 100 sd 3000') {
         } else {
         }
         return redirect(route('dashboard'));
