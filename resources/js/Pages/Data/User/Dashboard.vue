@@ -54,24 +54,27 @@ const props = defineProps({
                                         {{ item.alamat_perumahan }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-wrap"> 
+                                        <div v-if="item.status=='Lengkapi'">
+
+                                            <div v-if="item.ref_mbrOrNon=='MBR'">
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-mbr')"><span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> </Link>
+                                            </div>
+                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Kurang dari 100'">
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-1')"><span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> </Link>
+                                            </div>
+                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit 100 sd 3000'">
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-2')"><span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> </Link>
+                                            </div>
+                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Lebih dari 3000'">
+                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-3')"><span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> </Link>
+                                            </div>
+                                        </div>
+                                        <div v-else>
                                             <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> {{ item.status }} </span> 
+                                        </div>
                                     
                                     </td>
                                     <td class="px-6 py-4 text-center"> 
-                                        <div v-if="item.status=='Lengkapi'">
-                                            <div v-if="item.ref_mbrOrNon=='MBR'">
-                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-mbr')">Lengkapi</Link>
-                                            </div>
-                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Kurang dari 100'">
-                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-1')">Lengkapi</Link>
-                                            </div>
-                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit 100 sd 3000'">
-                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-2')">Lengkapi</Link>
-                                            </div>
-                                            <div v-if="item.ref_mbrOrNon=='NON MBR Jumlah Unit Lebih dari 3000'">
-                                                <Link class="text-purple-800 hover:underline pl-2" :href="route('pengajuan-non-mbr-3')">Lengkapi</Link>
-                                            </div>
-                                        </div>
                                         <a target="_blank" :href="'https://www.google.com/maps/search/?api=1&query=' + item.koordinat_perumahan + ''" class="text-purple-800 hover:underline pl-2">Maps</a>
 
                                         <a href="#" class="text-purple-800 hover:underline pl-2">Riwayat</a> 
