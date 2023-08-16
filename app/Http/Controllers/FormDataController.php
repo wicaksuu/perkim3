@@ -283,7 +283,7 @@ class FormDataController extends Controller
             $pdf->SetFont('Arial', 'I', 11);
             $pdf->Cell(0, 0, 'Dokumen ini telah ditandatangani secara elektronik oleh Kepala Dinas Perumahan dan Kawasan Permukiman Kabupaten Madiun', 0, 0, 'C');
             $pdf->Image($file_name, $size['width'] - $x, $size['height'] - $y, $width, $height);
-            $pdf->Output(public_path('storage/' . $code . '.pdf'), 'F');
+            $pdf->Output(public_path('storage/arsip/' . $code . '.pdf'), 'F');
             unlink($file_name);
             FormData::where('kode_unik', $kodeunik)->update([
                 'status' => 'Diterbitkan',
