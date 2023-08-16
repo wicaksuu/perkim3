@@ -146,6 +146,57 @@ class FormDataController extends Controller
             $data->status = "Diproses";
             $data->save();
         } elseif ($data['kode_unik'] == 'NON MBR Jumlah Unit Kurang dari 100') {
+            Validator::make($data, [
+                'luas_lahan' => ['required', 'string', 'max:255'],
+                'kode_unik' => ['required', 'string', 'max:255'],
+                'persyaratan_prasarana_saran_dan_utilitas_umum' => ['required', 'boolean', 'accepted'],
+                'persyaratan_penyajian_gambar_rencana_tapak' => ['required', 'boolean', 'accepted'],
+                'wajib' => ['required', 'boolean', 'accepted'],
+                'ref_sertifikat_tanah' => ['required', 'mimes:pdf'],
+                'ref_akta_jual_beli' => ['required', 'mimes:pdf'],
+                'ref_bukti_pelunasan_sppt_pbb' => ['required', 'mimes:pdf'],
+                'ref_gambar_rencana_zip' => ['required', 'mimes:zip'],
+                'ref_gambar_rencana_pdf' => ['required', 'mimes:pdf'],
+                'ref_keberadaan_perumahan' => ['required'],
+                'luas_ruang_milik_jalan' => ['required', 'string', 'max:255'],
+                'tempat_ibadah' => ['required', 'string', 'max:255'],
+                'ruang_terbuka_hijau' => ['required', 'string', 'max:255'],
+                'makam' => ['required', 'string', 'max:255'],
+                'tgl_jadwaal_rencana_dimulainya_pembangunan' => ['required', 'string', 'max:255'],
+                'tanggal_jadwal_rencana_dimulainya_pemasaran' => ['required', 'string', 'max:255'],
+                'tanggal_jadwal_dimulainya_perjanjian_jual_beli' => ['required', 'string', 'max:255'],
+                'tanggal_jadwal_rencana_selesai_pembangunan_psu' => ['required', 'string', 'max:255'],
+                'tanggal_jadwal_rencana_penyerahan_psu' => ['required', 'string', 'max:255'],
+            ])->validateWithBag('submit');
+            unset($data['wajib']);
+            unset($data['kode_unik']);
+
+            $filePaths = [];
+            $fileKeys = [
+                'ref_sertifikat_tanah',
+                'ref_akta_jual_beli',
+                'ref_bukti_pelunasan_sppt_pbb',
+                'ref_gambar_rencana_zip',
+                'ref_gambar_rencana_pdf',
+            ];
+
+            foreach ($fileKeys as $fileKey) {
+                if ($request->hasFile($fileKey)) {
+                    $file = $request->file($fileKey);
+                    $filePath = Storage::disk('public')->put('pdf', $file);
+                    $filePaths[$fileKey] = $filePath;
+                }
+            }
+
+            $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->first();
+            foreach ($data as $key => $value) {
+                $data->$key = $value;
+            }
+            foreach ($filePaths as $fileKey => $filePath) {
+                $data->$fileKey = $filePath;
+            }
+            $data->status = "Diproses";
+            $data->save();
         } elseif ($data['kode_unik'] == 'NON MBR Jumlah Unit 100 sd 3000') {
         } else {
         }
