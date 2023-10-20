@@ -250,9 +250,9 @@ class FormDataController extends Controller
         if (Auth::user()->role == 'DPMPTSP') {
             $berkas = FormData::where('kode_unik',  $kodeunik)->first();
 
-            $command = "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -o " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf) . " " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf);
+            // $command = "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -o " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf) . " " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf);
 
-            $cek = exec($command);
+            // $cek = exec($command);
             // dd($cek);
             $options = new QROptions([
                 'version' => 5,
