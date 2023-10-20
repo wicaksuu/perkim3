@@ -253,7 +253,7 @@ class FormDataController extends Controller
             $command = "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -o " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf) . " " . public_path('storage/' . $berkas->ref_gambar_rencana_pdf);
 
             $cek = exec($command);
-            dd($cek);
+            // dd($cek);
             $options = new QROptions([
                 'version' => 5,
                 'outputType' => QRCode::OUTPUT_IMAGE_JPG,
