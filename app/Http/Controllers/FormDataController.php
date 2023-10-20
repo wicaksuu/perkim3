@@ -248,7 +248,8 @@ class FormDataController extends Controller
     {
 
         if (Auth::user()->role == 'DPMPTSP') {
-
+            $cek = exec('php --version');
+            dd($cek);
             $berkas = FormData::where('kode_unik',  $kodeunik)->first();
             $options = new QROptions([
                 'version' => 5,
