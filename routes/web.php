@@ -50,15 +50,15 @@ Route::middleware([
     Route::get('/dokumen-tersimpan', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dinas/DaftarArsip', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/KepalaDinas/DaftarArsip', ['data' => $data]);
                 break;
             case 'DPMPTSP':
-                $data = FormData::with('user')->where('status', 'Diterbitkan')->get();
+                $data = FormData::with('user')->where('status', 'Diterbitkan')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dpmptsp/DaftarArsip', ['data' => $data]);
                 break;
             default:
@@ -71,11 +71,11 @@ Route::middleware([
     Route::get('/menunggu-dpmptsp', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                $data = FormData::with('user')->where('status', 'Disahkan')->get();
+                $data = FormData::with('user')->where('status', 'Disahkan')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dinas/DaftarAntrianDpmptsp', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                $data = FormData::with('user')->where('status', 'Disahkan')->get();
+                $data = FormData::with('user')->where('status', 'Disahkan')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/KepalaDinas/DaftarAntrianDpmptsp', ['data' => $data]);
                 break;
             default:
@@ -87,11 +87,11 @@ Route::middleware([
     Route::get('/daftar-ditolak', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                $data = FormData::with('user')->where('status', 'Ditolak')->get();
+                $data = FormData::with('user')->where('status', 'Ditolak')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dinas/DaftarDitolak', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                $data = FormData::with('user')->where('status', 'Ditolak')->get();
+                $data = FormData::with('user')->where('status', 'Ditolak')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/KepalaDinas/DaftarDitolak', ['data' => $data]);
                 break;
             default:
@@ -103,7 +103,7 @@ Route::middleware([
     Route::get('/daftar-terverifikasi', function () {
         switch (Auth::user()->role) {
             case 'Dinas':
-                $data = FormData::with('user')->where('status', 'Terverifikasi')->get();
+                $data = FormData::with('user')->where('status', 'Terverifikasi')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dinas/DaftarTerverifikasi', ['data' => $data]);
                 break;
             default:
@@ -116,15 +116,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         switch (Auth::user()->role) {
             case 'User':
-                $data = FormData::with('user')->where('user_id', Auth::user()->id)->get();
+                $data = FormData::with('user')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/User/Dashboard', ['data' => $data]);
                 break;
             case 'Dinas':
-                $data = FormData::with('user')->where('status', 'Diproses')->get();
+                $data = FormData::with('user')->where('status', 'Diproses')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/Dinas/Dashboard', ['data' => $data]);
                 break;
             case 'Kepala Dinas':
-                $data = FormData::with('user')->where('status', 'Terverifikasi')->get();
+                $data = FormData::with('user')->where('status', 'Terverifikasi')->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/KepalaDinas/Dashboard', ['data' => $data]);
                 break;
             case 'DPMPTSP':
@@ -151,8 +151,8 @@ Route::middleware([
     Route::get('/pengajuan-mbr', function () {
         switch (Auth::user()->role) {
             case 'User':
-                $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->first();
-                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->get();
+                $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
+                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/User/Mbr', ['KodeUnik' => $data->kode_unik, 'psu' => $psu]);
                 break;
             default:
@@ -164,8 +164,8 @@ Route::middleware([
     Route::get('/pengajuan-non-mbr-1', function () {
         switch (Auth::user()->role) {
             case 'User':
-                $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->first();
-                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->get();
+                $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
+                $psu = PSUs::where('kode_unik', $data->kode_unik)->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
                 return Inertia::render('Data/User/NonMbr1', ['KodeUnik' => $data->kode_unik, 'psu' => $psu]);
                 break;
             default:
