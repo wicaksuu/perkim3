@@ -136,7 +136,7 @@ class FormDataController extends Controller
                 }
             }
 
-            $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->first();
+            $data = FormData::where('ref_mbrOrNon', 'MBR')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
             foreach ($data as $key => $value) {
                 $data->$key = $value;
             }
@@ -188,7 +188,7 @@ class FormDataController extends Controller
                 }
             }
 
-            $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->first();
+            $data = FormData::where('ref_mbrOrNon', 'NON MBR Jumlah Unit Kurang dari 100')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
             foreach ($data as $key => $value) {
                 $data->$key = $value;
             }
@@ -225,7 +225,7 @@ class FormDataController extends Controller
 
         if (Auth::user()->role == 'Dinas') {
 
-            $data = FormData::where('kode_unik', $kodeunik)->with('psu', 'user')->first();
+            $data = FormData::where('kode_unik', $kodeunik)->with('psu', 'user')->orderBy('id', 'desc')->first();
             return Inertia::render('Data/Dinas/Buka/View', ['data' => $data]);
         } else {
             return back();
